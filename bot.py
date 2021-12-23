@@ -4,6 +4,7 @@ import os
 from discord.commands import Option
 from discord.commands import permissions
 import requests
+import datetime
 
 Dalti = discord.Bot()
 
@@ -11,14 +12,26 @@ game = "with toys"
 act = discord.Game(game)
 
 @Dalti.event
+async def on_connect():
+    print("Connected to Discord. Not ready to receive commands.")
+    print("-----------")
+    try:
+     await Dalti.change_presence(status=discord.Status.dnd, activity=discord.Game("Connecting..."))
+     print("Connecting presence set.")
+    
+    except discord.InvalidArgument:
+     print("Could not set connecting presence.")
+
+@Dalti.event
 async def on_ready():
     print(f"Logged in as {Dalti.user} - ID: {Dalti.user.id}")
-    print("-----------")
     try:
      await Dalti.change_presence(status=discord.Status.online, activity=act)
      print("Successfully set bot presence.")
+     print("----------")
     except discord.InvalidArgument:
      print("Could not set presence.")
+     print("----------")
 
 @Dalti.command()
 async def ping(ctx):
@@ -44,33 +57,48 @@ async def pet(ctx, user: discord.Member):
     """Pet a user!"""
     l = ["They bit you.", "Such a good boi.", "Look how they wiggle their tail!"]
     s = random.choice(l)
-    await ctx.respond(content=f"{ctx.author.mention} has pet {user.mention}! {s}")
+
+    Embed = discord.Embed(
+        description=f"You have pet {user.mention}. {s}"
+    )
+
+    Embed.set_author(name=f"{ctx.author.user}", icon_url=f"{ctx.author.avatar_url}")
+    
+    if s == "They bit you.":
+        image = "https://media2.giphy.com/media/JpSlrYUK0UZ9BOyCyh/giphy.gif"
+    elif s == "Such a good boi.":
+        image = "https://media0.giphy.com/media/Gx2vpQi2WPToc/giphy.gif"
+    else:
+        image = "https://media3.giphy.com/media/Nj0FfX9n53gf6/giphy.gif"
+
+    Embed.set_image(url=f"{image}")
+    Embed.set_footer(text="Pet Pet")
+    Embed.timestamp = datetime.datetime.utcnow()
+    await ctx.respond(embed=Embed)
 
 @Dalti.command(default_permission=False)
 @permissions.permission(user_id=449245847767482379, permission=True)
-async def setstatus(ctx, status: Option(str, "Set status", choices=["online", "idle", "dnd"]), activity: str = game):
+async def setstatus(ctx, status: Option(str, "Set status", choices=["online", "idle", "dnd"])):
     """Change Dalti's status"""
-    new_act = activity
-    new_game = discord.Game(new_act)
     try:
         if status == "online":
-            await Dalti.change_presence(status=discord.Status.online, activity=new_game)
-            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiOnline:923700141754552353> `Online` and my activity to `{activity}`.", color=discord.Color.from_rgb(67,181,130))
+            await Dalti.change_presence(status=discord.Status.online)
+            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiOnline:923700141754552353> `Online`.", color=discord.Color.from_rgb(67,181,130))
             await ctx.respond(embed=Embed)
         
         elif status == "idle":
-            await Dalti.change_presence(status=discord.Status.idle, activity=new_game)
-            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiIdle:923700173438349383> `Idle` and my activity to `{activity}`.`", color=discord.Color.from_rgb(67,181,130))
+            await Dalti.change_presence(status=discord.Status.idle)
+            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiIdle:923700173438349383> `Idle`.", color=discord.Color.from_rgb(67,181,130))
             await ctx.respond(embed=Embed)
 
         elif status == "dnd":
-            await Dalti.change_presence(status=discord.Status.dnd, activity=new_game)
-            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiDND:923700213389086840> `DND` and my activity to `{activity}`.", color=discord.Color.from_rgb(67,181,130))
+            await Dalti.change_presence(status=discord.Status.dnd)
+            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiDND:923700213389086840> `DND`.", color=discord.Color.from_rgb(67,181,130))
             await ctx.respond(embed=Embed)
     
     except Exception:
         Embed = discord.Embed(description="<:daltiError:923699414646816768> I was not able to change my status/activity.", colour=discord.Colour.from_rgb(240,74,71))
-        await ctx.respond("Could not change my status.")
+        await ctx.respond(embed=Embed)
 
 @Dalti.command()
 async def apod(ctx):
