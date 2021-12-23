@@ -3,7 +3,7 @@ import discord
 import random
 import os
 
-Dalti = commands.Bot(command_prefix=commands.when_mentioned_or("d!"))
+Dalti = discord.Bot()
 
 act = discord.Game("with toys")
 
@@ -44,8 +44,13 @@ async def pet(ctx, arg):
     s = random.choice(l)
     await ctx.reply(content=f"You have pet {(arg)}. {s}", allowed_mentions=discord.AllowedMentions(users=False), mention_author=False)
 
-@Dalti.slash_command()
+@Dalti.command()
 async def stest(ctx):
     await ctx.respond(f"Hello, {ctx.author.name}!")
+
+@Dalti.command(guild_ids=[688912903385907223])
+async def hello(ctx):
+    """Say hello"""
+    await ctx.respond(f"Hello, {ctx.author.mention}")
 
 Dalti.run(os.environ["DISCORD_TOKEN"])
