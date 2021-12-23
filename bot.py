@@ -48,15 +48,15 @@ async def setstatus(ctx, status: Option(str, "Set status", choices=["online", "i
     """Change Dalti's status"""
     try:
         if status == "online":
-            await Dalti.change_presence(status=discord.Status.online)
+            await Dalti.change_presence(status=discord.Status.online, activity=act)
             await ctx.respond(f"Sucessfully changed my status to {status}")
         
         elif status == "idle":
-            await Dalti.change_presence(status=discord.Status.idle)
+            await Dalti.change_presence(status=discord.Status.idle, activity=act)
             await ctx.respond(f"Sucessfully changed my status to {status}")
 
         elif status == "dnd":
-            await Dalti.change_presence(status=discord.Status.dnd)
+            await Dalti.change_presence(status=discord.Status.dnd, activity=act)
             await ctx.respond(f"Sucessfully changed my status to {status}")
     
     except discord.InvalidArgument:
