@@ -1,7 +1,7 @@
-from discord.ext import commands
 import discord
 import random
 import os
+from discord.commands import option
 
 Dalti = discord.Bot()
 
@@ -19,38 +19,26 @@ async def on_ready():
 @Dalti.command()
 async def ping(ctx):
     """Pings bot"""
-    await ctx.send("Pong!")
-    
+    await ctx.respond("Pong!")
 
 @Dalti.command()
-async def say(ctx, *, args):
+async def say(ctx, 
+arguments: option(str, "What should Dalti say?")):
     """Return what you said as Dalti"""
-    await ctx.send((args))
+    await ctx.send(arguments)
+    await ctx.respond("Sent message.", ephemeral=True)
 
 @Dalti.command()
 async def invite(ctx):
     embed = discord.Embed(title="Invite me!", description="You can get me [here](https://discord.com/api/oauth2/authorize?client_id=823941047473274960&permissions=260315671798&scope=bot%20applications.commands)")
-    await ctx.reply(embed=embed, mention_author=False)
+    await ctx.respond(embed=embed, mention_author=False)
+
 
 @Dalti.command()
-async def test(ctx):
-    us = open("users.txt", "r")
-    for x in us:
-        await ctx.send(x)
-
-@Dalti.command()
-async def pet(ctx, arg):
+async def pet(ctx, user: discord.Member):
     l = ["They bit you.", "Such a good boi.", "Look how they wiggle their tail!"]
     s = random.choice(l)
-    await ctx.reply(content=f"You have pet {(arg)}. {s}", allowed_mentions=discord.AllowedMentions(users=False), mention_author=False)
+    await ctx.respond(content=f"You have pet {user.mention}. {s}", mention_author=False)
 
-@Dalti.command()
-async def stest(ctx):
-    await ctx.respond(f"Hello, {ctx.author.name}!")
 
-@Dalti.command(guild_ids=[688912903385907223])
-async def hello(ctx):
-    """Say hello"""
-    await ctx.respond(f"Hello, {ctx.author.mention}")
-
-Dalti.run(os.environ["DISCORD_TOKEN"])
+Dalti.run(os.environ("DISCORD_TOKEN"))
