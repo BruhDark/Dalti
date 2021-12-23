@@ -46,6 +46,6 @@ async def pet(ctx, arg):
 
 @Dalti.slash_command()
 async def stest(ctx):
-    await ctx.send(f"Hello, {ctx.author.name}!")
+    await ctx.respond(f"Hello, {ctx.author.name}!")
 
 Dalti.run(os.environ["DISCORD_TOKEN"])
