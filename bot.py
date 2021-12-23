@@ -44,13 +44,8 @@ async def pet(ctx, arg):
     s = random.choice(l)
     await ctx.reply(content=f"You have pet {(arg)}. {s}", allowed_mentions=discord.AllowedMentions(users=False), mention_author=False)
 
-@Dalti.command()
-async def members(ctx, arg):
-    m = []
-    for member in Dalti.guild.fetch_members():
-        if member.has_role(arg):
-            m.append(member.user)
-    else:
-        await ctx.send(m)
+@Dalti.slash_command
+async def stest(ctx):
+    await ctx.send(f"Hello, {ctx.author.name}!")
 
 Dalti.run(os.environ["DISCORD_TOKEN"])
