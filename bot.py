@@ -1,7 +1,7 @@
 import discord
 import random
 import os
-from discord.commands import option
+from discord.commands import Option
 from discord.commands import permissions
 
 Dalti = discord.Bot()
@@ -44,7 +44,7 @@ async def pet(ctx, user: discord.Member):
 
 @Dalti.command(default_permission=False)
 @permissions.permission(user_id=449245847767482379, permission=True)
-async def setstatus(ctx, status: option(str, "Set status", choices=["online", "idle", "dnd"])):
+async def setstatus(ctx, status: Option(str, "Set status", choices=["online", "idle", "dnd"])):
     """Change Dalti's status"""
     try:
         if status == "online":
