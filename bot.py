@@ -70,9 +70,9 @@ async def apod(ctx):
 
     Embed = discord.Embed(title=response["title"], 
     description=response["explanation"],
-    set_image=response["hdurl"], 
+    image=response["hdurl"], 
     color="#0b3d91",
-    set_footer="© {} - {}".format(response["copyright"], response["date"]))
+    footer="© {} - {}".format(response["copyright"], response["date"]))
 
     await ctx.respond(embed=Embed)
 
