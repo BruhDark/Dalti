@@ -3,6 +3,8 @@ async-timeout==3.0.1
 attrs==21.2.0
 chardet==4.0.0
 git+https://github.com/Pycord-Development/pycord
+requests==2.26.0
+pymongo==4.0.1
 idna==3.2
 multidict==5.1.0
 typing-extensions==3.10.0.0
