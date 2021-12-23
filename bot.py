@@ -3,6 +3,7 @@ import random
 import os
 from discord.commands import option
 from discord.commands import permissions
+import requests
 
 Dalti = discord.Bot()
 
@@ -20,7 +21,7 @@ async def on_ready():
 @Dalti.command()
 async def ping(ctx):
     """Pings bot"""
-    await ctx.respond("Pong!")
+    await ctx.respond(f"Pong! `{Dalti.latency}`")
 
 @Dalti.command()
 async def say(ctx, arguments: str):
@@ -62,5 +63,17 @@ async def setstatus(ctx, status: option(str, "Set status", choices=["online", "i
     except discord.InvalidArgument:
         await ctx.respond("Could not change my status.")
 
+@Dalti.command()
+async def apod(ctx):
+    """Retreive today's APOD from Nasa"""
+    response = requests.get("https://api.nasa.gov/planetary/apod?api_key=2JvlKQHQlB1RffyXdtxcpb64HlBE6QzEp0yC0CSq").json()
+
+    Embed = discord.Embed(title=response["title"], 
+    description=response["explanation"],
+    set_image=response["hdurl"], 
+    color="#0b3d91",
+    set_footer="© {} - {}".format(response["copyright"], response["date"]))
+
+    await ctx.respond(embed=Embed)
 
 Dalti.run(os.environ["DISCORD_TOKEN"])
