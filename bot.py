@@ -40,4 +40,4 @@ async def pet(ctx, user: discord.Member):
     await ctx.respond(content=f"You have pet {user.mention}. {s}", mention_author=False)
 
 
-Dalti.run(os.environ("DISCORD_TOKEN"))
+Dalti.run(os.environ["DISCORD_TOKEN"])
