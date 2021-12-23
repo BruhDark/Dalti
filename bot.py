@@ -21,7 +21,7 @@ async def on_ready():
 @Dalti.command()
 async def ping(ctx):
     """Pings bot"""
-    await ctx.respond(f"Pong! `{Dalti.latency}`")
+    await ctx.respond(f"Pong! `{round(Dalti.latency * 1000)}ms`")
 
 @Dalti.command()
 async def say(ctx, arguments: str):
@@ -69,10 +69,11 @@ async def apod(ctx):
     response = requests.get("https://api.nasa.gov/planetary/apod?api_key=2JvlKQHQlB1RffyXdtxcpb64HlBE6QzEp0yC0CSq").json()
 
     Embed = discord.Embed(title=response["title"], 
-    description=response["explanation"],
-    set_image=response["hdurl"], 
-    color="#0b3d91",
-    set_footer="© {} - {}".format(response["copyright"], response["date"]))
+    description=response["explanation"], 
+    color="#0b3d91")
+
+    Embed.set_image(url=response["hdurl"])
+    Embed.set_footer(text="© {} - {}".format(response["copyright"], response["date"]), icon_url="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg")
 
     await ctx.respond(embed=Embed)
 
