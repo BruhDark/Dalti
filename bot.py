@@ -22,8 +22,7 @@ async def ping(ctx):
     await ctx.respond("Pong!")
 
 @Dalti.command()
-async def say(ctx, 
-arguments: option(str, "What should Dalti say?")):
+async def say(ctx, arguments: str):
     """Return what you said as Dalti"""
     await ctx.send(arguments)
     await ctx.respond("Sent message.", ephemeral=True)
