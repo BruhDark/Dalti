@@ -30,14 +30,14 @@ async def say(ctx, arguments: str):
 @Dalti.command()
 async def invite(ctx):
     embed = discord.Embed(title="Invite me!", description="You can get me [here](https://discord.com/api/oauth2/authorize?client_id=823941047473274960&permissions=260315671798&scope=bot%20applications.commands)")
-    await ctx.respond(embed=embed, mention_author=False)
+    await ctx.respond(embed=embed)
 
 
 @Dalti.command()
 async def pet(ctx, user: discord.Member):
     l = ["They bit you.", "Such a good boi.", "Look how they wiggle their tail!"]
     s = random.choice(l)
-    await ctx.respond(content=f"You have pet {user.mention}. {s}", mention_author=False)
+    await ctx.respond(content=f"{ctx.author} has pet {user.mention}! {s}")
 
 
 Dalti.run(os.environ["DISCORD_TOKEN"])
