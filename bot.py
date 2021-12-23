@@ -50,20 +50,22 @@ async def pet(ctx, user: discord.Member):
 @permissions.permission(user_id=449245847767482379, permission=True)
 async def setstatus(ctx, status: Option(str, "Set status", choices=["online", "idle", "dnd"]), activity: str = game):
     """Change Dalti's status"""
+    new_act = activity
+    new_game = discord.Game(new_act)
     try:
         if status == "online":
-            await Dalti.change_presence(status=discord.Status.online, activity=act)
-            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiOnline:923700141754552353> `Online` and my activity to `{activity}`.", color=discord.Colour.from_rbg(67,181,130))
+            await Dalti.change_presence(status=discord.Status.online, activity=new_game)
+            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiOnline:923700141754552353> `Online` and my activity to `{activity}`.", color=discord.Color.from_rbg(67,181,130))
             await ctx.respond(embed=Embed)
         
         elif status == "idle":
-            await Dalti.change_presence(status=discord.Status.idle, activity=act)
-            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiIdle:923700173438349383> `Idle` and my activity to `{activity}`.`", color=discord.Colour.from_rbg(67,181,130))
+            await Dalti.change_presence(status=discord.Status.idle, activity=new_game)
+            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiIdle:923700173438349383> `Idle` and my activity to `{activity}`.`", color=discord.Color.from_rbg(67,181,130))
             await ctx.respond(embed=Embed)
 
         elif status == "dnd":
-            await Dalti.change_presence(status=discord.Status.dnd, activity=act)
-            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiDND:923700213389086840> `DND` and my activity to `{activity}`.", color=discord.Colour.from_rbg(67,181,130))
+            await Dalti.change_presence(status=discord.Status.dnd, activity=new_game)
+            Embed = discord.Embed(description=f"<:daltiSuccess:923699355779731476> Sucessfully changed my status to <:daltiDND:923700213389086840> `DND` and my activity to `{activity}`.", color=discord.Color.from_rbg(67,181,130))
             await ctx.respond(embed=Embed)
     
     except Exception:
