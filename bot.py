@@ -70,7 +70,7 @@ async def apod(ctx):
 
     Embed = discord.Embed(title=response["title"], 
     description=response["explanation"], 
-    color=discord.Colour.blue)
+    color=discord.Color.from_rgb(11, 61, 145))
 
     Embed.set_image(url=response["hdurl"])
     Embed.set_footer(text="© {} - {}".format(response["copyright"], response["date"]), icon_url="https://www.nasa.gov/sites/all/themes/custom/nasatwo/images/nasa-logo.svg")
