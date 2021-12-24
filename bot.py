@@ -59,7 +59,8 @@ async def pet(ctx, user: discord.Member):
     s = random.choice(l)
 
     Embed = discord.Embed(
-        description=f"You have pet {user.mention}. {s}"
+        description=f"You have pet {user.mention}. {s}",
+        timestamp=datetime.datetime.utcnow()
     )
 
     Embed.set_author(name=f"{ctx.author.user}", icon_url=f"{ctx.author.avatar_url}")
@@ -73,7 +74,6 @@ async def pet(ctx, user: discord.Member):
 
     Embed.set_image(url=f"{image}")
     Embed.set_footer(text="Pet Pet")
-    Embed.timestamp = datetime.datetime.utcnow()
     await ctx.respond(embed=Embed)
 
 @Dalti.command(default_permission=False)
