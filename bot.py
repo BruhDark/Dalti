@@ -55,6 +55,7 @@ async def invite(ctx):
 @Dalti.command()
 async def pet(ctx, user: discord.Member):
     """Pet a user!"""
+    await ctx.defer()
     l = ["They bit you.", "Such a good boi.", "Look how they wiggle their tail!"]
     s = random.choice(l)
 
