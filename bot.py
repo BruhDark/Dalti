@@ -6,7 +6,8 @@ from discord.commands import permissions
 import requests
 import datetime
 
-Dalti = discord.Bot()
+intents = discord.Intents.default()
+Dalti = discord.Bot(intents=intents)
 
 game = "with toys"
 act = discord.Game(game)
