@@ -17,10 +17,10 @@ EMOTES = {
 }
 
 COLORS = {
-    "success": "67,181,130",
-    "error": "240,74,71",
-    "warning": "255,155,0",
-    "info": "113,134,213"
+    "success": "67, 181, 130",
+    "error": "240, 74, 71",
+    "warning": "255, 155, 0",
+    "info": "113, 134, 213"
 }
 
 ACTIVITY = "with toys"

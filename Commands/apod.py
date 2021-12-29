@@ -17,7 +17,7 @@ class Apod(commands.Cog):
      color=discord.Color.from_rgb(102,106,242))
 
      Embed.set_image(url=response["hdurl"])
-     Embed.set_footer(text="© {} - {}".format(response["copyright"], response["date"]), icon_url="https://media.discordapp.net/attachments/881968886248009821/923706098769358848/NASA_logo.png")
+     Embed.set_footer(text="© NASA - {}".format(response["date"]), icon_url="https://media.discordapp.net/attachments/881968886248009821/923706098769358848/NASA_logo.png")
 
      await ctx.respond(embed=Embed)
 
