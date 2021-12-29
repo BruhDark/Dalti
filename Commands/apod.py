@@ -8,8 +8,9 @@ class Apod(commands.Cog):
         self.bot = bot
 
     @slash_command()
-    async def apod(ctx):
+    async def apod(self, ctx):
      """Retreive today's APOD from Nasa"""
+
      response = requests.get("https://api.nasa.gov/planetary/apod?api_key=2JvlKQHQlB1RffyXdtxcpb64HlBE6QzEp0yC0CSq").json()
 
      Embed = discord.Embed(title=response["title"],  

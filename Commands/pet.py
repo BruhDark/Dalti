@@ -11,7 +11,7 @@ class Pet(commands.Cog):
     @slash_command()
     async def pet(self, ctx, user: discord.Member):
         """Pet a user!"""
-        await ctx.defer()
+        
         l = ["They bit you.", "Such a good boi.", "Look how they wiggle their tail!"]
         s = random.choice(l)
 

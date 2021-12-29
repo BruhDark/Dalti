@@ -8,7 +8,7 @@ class Say(commands.Cog):
 
     @slash_command(default_permissions=False)
     @permissions.permission(user_id=449245847767482379, permission=True)
-    async def say(ctx, arguments: str):
+    async def say(self, ctx, arguments: str):
         """Return what you said as Dalti"""
         await ctx.send(arguments)
         await ctx.respond("Sent message.", ephemeral=True)
