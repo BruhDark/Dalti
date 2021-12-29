@@ -1,6 +1,7 @@
 import discord
 
 PREFIX = "d!"
+DESCRIPTION = "Dalti is a multi-purpose bot. Just a cool bot, what else do we need to say?"
 
 EMOTES = {
     "success": "<:daltiSuccess:923699355779731476>",

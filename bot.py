@@ -2,14 +2,15 @@ from discord.ext import commands
 import discord
 import os
 from discord.ext.commands.bot import when_mentioned_or
-from config import PREFIX
+from config import PREFIX, ACTIVITY
+import datetime, time
 
 def main():
-    intents = discord.Intents.default()
-    Dalti = commands.Bot(command_prefix=when_mentioned_or(PREFIX), intents=intents)
+    intents = discord.Intents.all()
+    Dalti = commands.Bot(command_prefix=when_mentioned_or(PREFIX), 
+    intents=intents)
 
-    game = "with toys"
-    act = discord.Game(game)
+    act = discord.Game(ACTIVITY)
 
     @Dalti.event
     async def on_connect():
@@ -22,6 +23,9 @@ def main():
      
         except discord.InvalidArgument:
          pass
+
+        global up
+        up = time.time()
 
     @Dalti.event
     async def on_ready():

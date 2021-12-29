@@ -21,7 +21,7 @@ class Pet(commands.Cog):
             timestamp=datetime.datetime.utcnow()
         )
 
-        Embed.set_author(name=f"{ctx.author.username}", icon_url=f"{ctx.author.avatar_url}")
+        Embed.set_author(name=f"{ctx.author.name}", icon_url=f"{ctx.author.avatar_url}")
         
         if s == "They bit you.":
             image = "https://media2.giphy.com/media/JpSlrYUK0UZ9BOyCyh/giphy.gif"
