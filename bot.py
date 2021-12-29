@@ -2,10 +2,11 @@ from discord.ext import commands
 import discord
 import os
 from discord.ext.commands.bot import when_mentioned_or
+from config import PREFIX
 
 def main():
     intents = discord.Intents.default()
-    Dalti = commands.Bot(command_prefix=when_mentioned_or("d!"), intents=intents)
+    Dalti = commands.Bot(command_prefix=when_mentioned_or(PREFIX), intents=intents)
 
     game = "with toys"
     act = discord.Game(game)

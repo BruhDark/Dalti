@@ -1,3 +1,5 @@
+import discord
+
 PREFIX = "d!"
 
 EMOTES = {
@@ -17,10 +19,10 @@ EMOTES = {
 }
 
 COLORS = {
-    "success": "67, 181, 130",
-    "error": "240, 74, 71",
-    "warning": "255, 155, 0",
-    "info": "113, 134, 213"
+    "success": discord.Colour.from_rgb(67, 181, 130),
+    "error": discord.Colour.from_rgb(240, 74, 71),
+    "warning": discord.Colour.from_rgb(255, 155, 0),
+    "info": discord.Colour.from_rgb(113, 134, 213)
 }
 
 ACTIVITY = "with toys"
