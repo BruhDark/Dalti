@@ -1,9 +1,11 @@
+from discord.ext import commands
 import discord
 import os
+from discord.ext.commands.bot import when_mentioned_or
 
 def main():
     intents = discord.Intents.default()
-    Dalti = discord.Bot(intents=intents)
+    Dalti = commands.Bot(command_prefix=when_mentioned_or("d!"), intents=intents)
 
     game = "with toys"
     act = discord.Game(game)
@@ -36,7 +38,7 @@ def main():
     for command in os.listdir("Commands"):
         if command.endswith(".py") and not command.endswith("_"):
           Dalti.load_extension(f"Commands.{command[:-3]}")
-          print(f"Loaded {command}")
+          print(f"Loaded command: {command}")
     
     Dalti.run(os.environ["DISCORD_TOKEN"])
 
