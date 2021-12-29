@@ -2,7 +2,8 @@ from discord.ext import commands
 import discord
 import os
 from discord.ext.commands.bot import when_mentioned_or
-from config import PREFIX, ACTIVITY
+from discord.commands import slash_command
+from config import PREFIX, ACTIVITY, DESCRIPTION
 import datetime, time
 
 def main():
@@ -36,8 +37,36 @@ def main():
         if command.endswith(".py") and not command.endswith("_"):
           Dalti.load_extension(f"Commands.{command[:-3]}")
           print(f"Loaded command: {command}")
+
+    Dalti.add_cog(Stats(Dalti))
     
     Dalti.run(os.environ["DISCORD_TOKEN"])
+
+# Stats command here to avoid import up
+class Stats(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+
+    @slash_command()
+    async def stats(self, ctx):
+
+        await ctx.defer()
+
+        ctime = time.time()
+        diff = ctime - up
+        uptime = str(datetime.timedelta(seconds=diff))
+
+        pycordV = discord.__version__
+
+        embed = discord.Embed(title=f"{self.bot.name} Stats",description=DESCRIPTION, timestamp=datetime.datetime.utcnow())
+        embed.add_field(name="Uptime", value=uptime, inline=True)
+        embed.add_field(name="PyCord Version", value=pycordV, inline=True)
+
+        embed.set_thumbnail(url=self.bot.avatar_url)
+        embed.set_footer(text="Made with ♥️ by Dark")
+
+        ctx.respond(embed=embed)
+
 
 if __name__ == "__main__":
     main()
