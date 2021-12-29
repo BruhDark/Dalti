@@ -12,28 +12,20 @@ def main():
 
     @Dalti.event
     async def on_connect():
-        print("Connected to Discord. Not ready to receive commands.")
+        print("Connected.")
 
+        await Dalti.register_commands()
 
         try:
-         await Dalti.change_presence(status=discord.Status.dnd, activity=discord.Game("Connecting..."))
-         print("Connecting.")
+         await Dalti.change_presence(status=discord.Status.online, activity=act)
      
         except discord.InvalidArgument:
          pass
 
     @Dalti.event
     async def on_ready():
-     print(f"Logged in as {Dalti.user} - ID: {Dalti.user.id}")
-     
-     try:
-         await Dalti.change_presence(status=discord.Status.online, activity=act)
-         print("Successfully set bot presence.")
-         print("----------")
-    
-     except discord.InvalidArgument:
-         print("Could not set presence.")
-         print("----------")
+     print(f"Ready. Logged in as {Dalti.user} - ID: {Dalti.user.id}")
+     print("---------")
     
     for command in os.listdir("Commands"):
         if command.endswith(".py") and not command.endswith("_"):
