@@ -11,7 +11,7 @@ class Ping(commands.Cog):
 
         latency = round(self.bot.latency * 1000)
 
-        await ctx.respond(":ping_pong: Pong! My latency: `{latency}ms`")
+        await ctx.respond(f":ping_pong: Pong! My latency: `{latency}ms`")
 
 def setup(bot):
     bot.add_cog(Ping(bot))

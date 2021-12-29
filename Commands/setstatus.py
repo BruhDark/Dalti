@@ -26,21 +26,21 @@ class SetStatus(commands.Cog):
         try:
             if status == "online":
                 await self.bot.change_presence(status=discord.Status.online, activity=act)
-                Embed = discord.Embed(description=f"{esuccess} Sucessfully changed my status to {online} `Online`.", color=discord.Color.from_rgb(csuccess))
+                Embed = discord.Embed(description=f"{esuccess} Sucessfully changed my status to {online} `Online`.", color=csuccess)
                 await ctx.respond(embed=Embed)
             
             elif status == "idle":
                 await self.bot.change_presence(status=discord.Status.idle, activity=act)
-                Embed = discord.Embed(description=f"{esuccess} Sucessfully changed my status to {idle} `Idle`.", color=discord.Color.from_rgb(csuccess))
+                Embed = discord.Embed(description=f"{esuccess} Sucessfully changed my status to {idle} `Idle`.", color=csuccess)
                 await ctx.respond(embed=Embed)
 
             elif status == "dnd":
                 await self.bot.change_presence(status=discord.Status.dnd, activity=act)
-                Embed = discord.Embed(description=f"{esuccess} Sucessfully changed my status to {dnd} `DND`.", color=discord.Color.from_rgb(csuccess))
+                Embed = discord.Embed(description=f"{esuccess} Sucessfully changed my status to {dnd} `DND`.", color=csuccess)
                 await ctx.respond(embed=Embed)
         
         except Exception:
-            Embed = discord.Embed(description=f"{eerror} I was not able to change my status/activity.", colour=discord.Colour.from_rgb(cerror))
+            Embed = discord.Embed(description=f"{eerror} I was not able to change my status/activity.", colour=cerror)
             await ctx.respond(embed=Embed)
 
 def setup(bot):
