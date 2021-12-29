@@ -12,6 +12,7 @@ class Pet(commands.Cog):
     async def pet(self, ctx, user: discord.Member):
         """Pet a user!"""
         
+        await ctx.defer(ephemeral=False) 
         l = ["They bit you.", "Such a good boi.", "Look how they wiggle their tail!"]
         s = random.choice(l)
 
@@ -31,6 +32,7 @@ class Pet(commands.Cog):
 
         Embed.set_image(url=f"{image}")
         Embed.set_footer(text="Pet Pet")
+        
         await ctx.respond(embed=Embed)
 
 def setup(bot):
