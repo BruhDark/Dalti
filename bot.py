@@ -14,7 +14,6 @@ def main():
     intents=intents)
 
     act = discord.Game(ACTIVITY)
-    loaded = False
 
     @Dalti.event
     async def on_connect():
@@ -27,6 +26,8 @@ def main():
      
         except discord.InvalidArgument:
          pass
+
+        loaded = False
 
         if not loaded:
          global started
