@@ -62,7 +62,7 @@ class Stats(commands.Cog):
         embed.add_field(name="PyCord Version", value=f"`{pycordV}`", inline=True)
         embed.add_field(name="Bot", value=f"Username: {self.bot.user}\nID: {self.bot.user.id}\nCreated At: {self.bot.user.created_at}")
 
-        embed.set_thumbnail(url=self.bot.avatar_url)
+        embed.set_thumbnail(url=self.bot.avatar.url)
         embed.set_footer(text="Made with ♥️ by Dark")
 
         ctx.respond(embed=embed)
