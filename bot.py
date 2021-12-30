@@ -49,8 +49,7 @@ class Stats(commands.Cog):
 
     @slash_command()
     async def stats(self, ctx):
-
-        await ctx.defer()
+        """Get Dalti's stats"""
 
         ctime = time.time()
         diff = ctime - up
