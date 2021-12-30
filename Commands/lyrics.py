@@ -8,10 +8,11 @@ from config import COLORS, EMOTES
 
 class Lyrics(commands.Cog):
     def __init__(self, bot):
-        self.bot  = bot
+        self.bot = bot
 
     @slash_command()
     async def lyrics(self, ctx, title: option(str, "Song to search")):
+        """Find a song lyrics"""
 
         response = requests.get(f"https://some-random-api.ml/lyrics?title={title}").json()
         
