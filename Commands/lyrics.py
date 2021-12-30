@@ -28,7 +28,9 @@ class Lyrics(commands.Cog):
             author = response["author"]
             lyrics = response["lyrics"]
             thumbnail = response["thumbnail"]
+            thumbnail= thumbnail["genius"]
             links = response["links"]
+            links = links["genius"]
             disclaimer = response["disclaimer"]
 
             Embed = discord.Embed(title=f"{ti} - By {author}", 
