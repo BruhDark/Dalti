@@ -10,7 +10,7 @@ class Pat(commands.Cog):
 
     @slash_command()
     async def pat(self, ctx: commands.Context, user: discord.Member):
-        """Pet a user!"""
+        """Pat a user"""
         
         request = requests.get("https://some-random-api.ml/animu/pat").json()
         image = request["link"]
@@ -18,7 +18,7 @@ class Pat(commands.Cog):
         Embed = discord.Embed(
             description=f"{ctx.author.mention} pats {user.mention}. uwu",
             timestamp=datetime.datetime.utcnow(),
-            color=user.accent_color
+            color=discord.Color(user.accent_color)
         )
 
         Embed.set_author(name=f"{user.name}", icon_url=f"{user.avatar.url}")
