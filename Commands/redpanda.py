@@ -8,7 +8,7 @@ class RedPanda(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name="red panda")
+    @slash_command()
     async def redpanda(self, ctx: commands.Context, fact: Option(bool, "Add fact?", required=False, default=False)):
      """Fetches a red panda image and an optional fact"""
 

@@ -60,7 +60,7 @@ class Stats(commands.Cog):
         embed = discord.Embed(title=f"Dalti Stats",description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=ctx.user.color)
         embed.add_field(name="Uptime", value=uptime, inline=True)
         embed.add_field(name="PyCord Version", value=f"`{pycordV}`", inline=True)
-        embed.add_field(name="Bot", value=f"Username: {self.bot.user}\nID: {self.bot.user.id}\nCreated At: {self.bot.user.created_at}")
+        embed.add_field(name="Shard ID", value=f"Username: {self.bot.user}\nID: {self.bot.user.id}\nCreated At: {self.bot.user.created_at}")
 
 
         embed.set_thumbnail(url=self.bot.user.avatar.url)
