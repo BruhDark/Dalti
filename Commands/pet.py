@@ -9,10 +9,9 @@ class Pet(commands.Cog):
         self.bot = bot
 
     @slash_command()
-    async def pet(self, ctx, user: discord.Member):
+    async def pet(self, ctx: commands.Context, user: discord.Member):
         """Pet a user!"""
-        
-        await ctx.defer(ephemeral=False) 
+
         l = ["They bit you.", "Such a good boi.", "Look how they wiggle their tail!"]
         s = random.choice(l)
 
@@ -21,7 +20,7 @@ class Pet(commands.Cog):
             timestamp=datetime.datetime.utcnow()
         )
 
-        Embed.set_author(name=f"{ctx.author.name}", icon_url=f"{ctx.author.avatar_url}")
+        Embed.set_author(name=f"{ctx.author.name}", icon_url=f"{ctx.author.avatar.url}")
         
         if s == "They bit you.":
             image = "https://media2.giphy.com/media/JpSlrYUK0UZ9BOyCyh/giphy.gif"

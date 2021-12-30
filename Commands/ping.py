@@ -6,7 +6,7 @@ class Ping(commands.Cog):
         self.bot = bot
 
     @slash_command()
-    async def ping(self, ctx):
+    async def ping(self, ctx: commands.Context):
         """Measures the bot latency"""
 
         latency = round(self.bot.latency * 1000)
