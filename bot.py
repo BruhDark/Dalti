@@ -8,6 +8,8 @@ import datetime, time
 from config import COLORS
 import math
 import random
+import json
+import urllib
 
 def main():
     intents = discord.Intents.all()
@@ -78,6 +80,21 @@ class Stats(commands.Cog):
 
         uptime = f"{days or ''} {hours or ''} {minutes or ''} {seconds or ''}".strip()
 
+        request = urllib.request.urlopen("https://railway.instatus.com/summary.json")
+        response = json.load(request)
+
+        s = response["page"]
+        srailway = s["status"]
+
+        if srailway == "UP":
+            srailway =  "Up"
+        elif srailway == "HASISSUES":
+            srailway = "Has Issues"
+        elif srailway == "UNDERMAINTENANCE":
+            srailway = "Under Maintenance"
+        else:
+            srailway = "Unknown"
+
         pycordV = discord.__version__
 
         embed = discord.Embed(description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=COLORS["dalti"])
@@ -89,7 +106,8 @@ class Stats(commands.Cog):
 
         embed.add_field(name=":clock1: Uptime", value=uptime, inline=True)
         embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=True)
-        embed.add_field(name=":service_dog: Dalti Version", value=c)
+        embed.add_field(name=":service_dog: Dalti Version", value=c, inline=True)
+        embed.add_field(name="🚄 Railway Status", value=srailway, inline=True)
         embed.add_field(name=":package: Resources", value=f"[Repository](https://gitub.com/BruhDark/Dalti) | [Last Commit](https://github.com/BruhDark/Dalti/commit/main) | [Invite](https://discord.com/oauth2/authorize?client_id=823941047473274960&permissions=1635242211574&scope=bot%20applications.commands)")
 
         embed.set_footer(text="Made with ♥️")
