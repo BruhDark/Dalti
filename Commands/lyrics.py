@@ -40,3 +40,6 @@ class Lyrics(commands.Cog):
             Embed.set_footer(text=f"{disclaimer}")
 
             ctx.respond(embed=Embed)
+
+def setup(bot):
+    bot.add_cog(Lyrics(bot))
