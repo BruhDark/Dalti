@@ -14,6 +14,7 @@ def main():
     intents=intents)
 
     act = discord.Game(ACTIVITY)
+    loaded = False
 
     @Dalti.event
     async def on_connect():
@@ -27,8 +28,6 @@ def main():
         except discord.InvalidArgument:
          pass
 
-        global started
-        started = time.time()
 
     @Dalti.event
     async def on_ready():
@@ -43,6 +42,11 @@ def main():
     Dalti.add_cog(Stats(Dalti))
     
     Dalti.run(os.environ["DISCORD_TOKEN"])
+
+    if not loaded:
+        global started
+        started = time.time()
+        loaded = True
 
 # Stats command here to avoid import up
 class Stats(commands.Cog):
@@ -76,7 +80,7 @@ class Stats(commands.Cog):
 
         embed = discord.Embed(description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=COLORS["dalti"])
 
-        embed.set_author(name=f"{self.bot.user.name}#{self.bot.user.discriminator}", url=self.bot.user.avatar.url)
+        embed.set_author(name=f"{self.bot.user.name}#{self.bot.user.discriminator}", icon_url=self.bot.user.avatar.url)
 
         embed.add_field(name="Uptime", value=uptime, inline=True)
         embed.add_field(name="PyCord Version", value=f"{pycordV}", inline=True)
