@@ -1,6 +1,5 @@
 import discord
-from discord.commands import slash_command
-from discord.commands.commands import option
+from discord.commands import slash_command, Option
 from discord.ext import commands
 import requests
 import datetime
@@ -11,14 +10,14 @@ class Lyrics(commands.Cog):
         self.bot = bot
 
     @slash_command()
-    async def lyrics(self, ctx, title: option(str, "Song to search")):
+    async def lyrics(self, ctx, title: Option(str, "Song to search")):
         """Find a song lyrics"""
 
         response = requests.get(f"https://some-random-api.ml/lyrics?title={title}").json()
         
         try:
          eerror = EMOTES["error"]
-         cerror = EMOTES["error"]
+         cerror = COLORS["error"]
          error = response["error"]
          Embed = discord.Embed(description=f"{eerror} {error}", color=cerror)
 
