@@ -65,7 +65,7 @@ class Stats(commands.Cog):
         embed.set_thumbnail(url=self.bot.user.avatar.url)
         embed.set_footer(text="Made with ♥️ by Dark")
 
-        ctx.respond(embed=embed)
+        await ctx.respond(embed=embed)
 
 
 if __name__ == "__main__":
