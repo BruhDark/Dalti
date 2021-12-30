@@ -10,7 +10,7 @@ class Lyrics(commands.Cog):
         self.bot = bot
 
     @slash_command()
-    async def lyrics(self, ctx, title: Option(str, "Song to search")):
+    async def lyrics(self, ctx, title: Option(str, "Type a song title")):
         """Find a song lyrics"""
 
         response = requests.get(f"https://some-random-api.ml/lyrics?title={title}").json()
@@ -21,7 +21,7 @@ class Lyrics(commands.Cog):
          error = response["error"]
          Embed = discord.Embed(description=f"{eerror} {error}", color=cerror)
 
-         ctx.respond(embed=Embed)
+         await ctx.respond(embed=Embed)
             
         except KeyError:
             ti = response["title"]
@@ -39,7 +39,7 @@ class Lyrics(commands.Cog):
             Embed.set_thumbnail(url=f"{thumbnail}")
             Embed.set_footer(text=f"{disclaimer}")
 
-            ctx.respond(embed=Embed)
+            await ctx.respond(embed=Embed)
 
 def setup(bot):
     bot.add_cog(Lyrics(bot))

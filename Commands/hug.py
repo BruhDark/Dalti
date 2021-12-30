@@ -4,15 +4,15 @@ import requests
 import discord
 import datetime
 
-class Pat(commands.Cog):
+class Hug(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @slash_command()
-    async def pat(self, ctx: commands.Context, user: Option(discord.Member, "Select a user")):
-        """Pat a user"""
+    async def hug(self, ctx: commands.Context, user: Option(discord.Member, "Select a user")):
+        """Hug a user"""
         
-        request = requests.get("https://some-random-api.ml/animu/pat").json()
+        request = requests.get("https://some-random-api.ml/animu/hug").json()
         image = request["link"]
 
         Embed = discord.Embed(
@@ -29,4 +29,4 @@ class Pat(commands.Cog):
         await ctx.respond(embed=Embed)
 
 def setup(bot):
-    bot.add_cog(Pat(bot))
+    bot.add_cog(Hug(bot))
