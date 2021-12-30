@@ -7,6 +7,7 @@ from config import PREFIX, ACTIVITY, DESCRIPTION
 import datetime, time
 from config import COLORS
 import math
+import random
 
 def main():
     intents = discord.Intents.all()
@@ -83,9 +84,13 @@ class Stats(commands.Cog):
 
         embed.set_author(name=f"{self.bot.user.name}#{self.bot.user.discriminator}", icon_url=self.bot.user.avatar.url)
 
+        l = [":saxophone::bug:", "2.1.0-b"]
+        c = random.choice(l)
+
         embed.add_field(name=":clock1: Uptime", value=uptime, inline=True)
         embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=True)
-        embed.add_field(name=":package: Resources", value=f"[**Repository**](https://gitub.com/BruhDark/Dalti) | [**Invite**](https://discord.com/api/oauth2/authorize?client_id=823941047473274960&permissions=8&scope=bot%20applications.commands)")
+        embed.add_field(name=":service_dog: Dalti Version", value=c)
+        embed.add_field(name=":package: Resources", value=f"[Repository](https://gitub.com/BruhDark/Dalti) | [Last Commit](https://github.com/BruhDark/Dalti/commit/main) | [Invite](https://discord.com/oauth2/authorize?client_id=823941047473274960&permissions=1635242211574&scope=bot%20applications.commands)")
 
         embed.set_footer(text="Made with ♥️")
 
