@@ -28,6 +28,11 @@ def main():
         except discord.InvalidArgument:
          pass
 
+        if not loaded:
+         global started
+         started = time.time()
+         loaded = True
+
 
     @Dalti.event
     async def on_ready():
@@ -42,11 +47,6 @@ def main():
     Dalti.add_cog(Stats(Dalti))
     
     Dalti.run(os.environ["DISCORD_TOKEN"])
-
-    if not loaded:
-        global started
-        started = time.time()
-        loaded = True
 
 # Stats command here to avoid import up
 class Stats(commands.Cog):
