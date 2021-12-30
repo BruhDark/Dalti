@@ -16,15 +16,13 @@ class RedPanda(commands.Cog):
 
      exp = response["fact"] if fact else ""
 
-     await ctx.respond("Looking for a red panda...")
-
      Embed = discord.Embed(title="Found one!",
      description=exp,
      color=discord.Color.from_rgb(156,26,4))
 
      Embed.set_image(url=response["image"])
 
-     await ctx.edit_message(embed=Embed)
+     await ctx.respond(embed=Embed)
 
 def setup(bot):
     bot.add_cog(RedPanda(bot))

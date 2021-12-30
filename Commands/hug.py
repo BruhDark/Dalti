@@ -21,7 +21,7 @@ class Hug(commands.Cog):
             color=user.color
         )
 
-        Embed.set_author(name=f"{user.user}", icon_url=f"{user.avatar.url}")
+        Embed.set_author(name=f"{user.user.user}", icon_url=f"{user.avatar.url}")
         Embed.set_image(url=f"{image}")
 
         Embed.set_footer(text=f"From {ctx.user}")
