@@ -82,9 +82,9 @@ class Stats(commands.Cog):
 
         embed.set_author(name=f"{self.bot.user.name}#{self.bot.user.discriminator}", icon_url=self.bot.user.avatar.url)
 
-        embed.add_field(name="Uptime", value=uptime, inline=True)
-        embed.add_field(name="PyCord Version", value=f"{pycordV}", inline=True)
-        embed.add_field(name="Resources", value=f"[Repository](https://gitub.com/BruhDark/Dalti) | [Invite](https://discord.com/api/oauth2/authorize?client_id=823941047473274960&permissions=8&scope=bot%20applications.commands)")
+        embed.add_field(name=":clock1: Uptime", value=uptime, inline=True)
+        embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=True)
+        embed.add_field(name=":package: Resources", value=f"[**Repository**](https://gitub.com/BruhDark/Dalti) | [**Invite**](https://discord.com/api/oauth2/authorize?client_id=823941047473274960&permissions=8&scope=bot%20applications.commands)")
 
         embed.set_footer(text="Made with ♥️")
 
