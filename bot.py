@@ -57,7 +57,7 @@ class Stats(commands.Cog):
 
         pycordV = discord.__version__
 
-        embed = discord.Embed(title=f"Dalti Stats",description=DESCRIPTION, timestamp=datetime.datetime.utcnow())
+        embed = discord.Embed(title=f"Dalti Stats",description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=self.bot.user.color)
         embed.add_field(name="Uptime", value=uptime, inline=True)
         embed.add_field(name="PyCord Version", value=f"`{pycordV}`", inline=True)
         embed.add_field(name="Bot", value=f"Username: {self.bot.user}\nID: {self.bot.user.id}\nCreated At: {self.bot.user.created_at}")

@@ -18,7 +18,7 @@ class Pat(commands.Cog):
         Embed = discord.Embed(
             description=f"{ctx.author.mention} pats {user.mention}. uwu",
             timestamp=datetime.datetime.utcnow(),
-            color=discord.Color(user.accent_color)
+            color=user.color
         )
 
         Embed.set_author(name=f"{user.name}", icon_url=f"{user.avatar.url}")
