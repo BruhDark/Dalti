@@ -5,6 +5,8 @@ from discord.ext.commands.bot import when_mentioned_or
 from discord.commands import slash_command
 from config import PREFIX, ACTIVITY, DESCRIPTION
 import datetime, time
+from config import COLORS
+import math
 
 def main():
     intents = discord.Intents.all()
@@ -25,8 +27,8 @@ def main():
         except discord.InvalidArgument:
          pass
 
-        global up
-        up = time.time()
+        global started
+        started = time.time()
 
     @Dalti.event
     async def on_ready():
@@ -51,20 +53,36 @@ class Stats(commands.Cog):
     async def stats(self, ctx):
         """Get Dalti's stats"""
 
-        ctime = time.time()
-        diff = ctime - up
-        uptime = str(datetime.timedelta(seconds=diff))
+        seconds = math.floor(time.time() - started)
+
+        m, s = divmod(seconds, 60)
+        h, m = divmod(m, 60)
+        d, h = divmod(h, 24)
+
+        days, hours, minutes, seconds = None, None, None, None
+
+        if d:
+            days = f"{d}d"
+        if h:
+            hours = f"{h}h"
+        if m:
+            minutes = f"{m}m"
+        if s:
+            seconds = f"{s}s"
+
+        uptime = f"{days or ''} {hours or ''} {minutes or ''} {seconds or ''}".strip()
 
         pycordV = discord.__version__
 
-        embed = discord.Embed(title=f"Dalti Stats",description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=ctx.user.color)
+        embed = discord.Embed(description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=COLORS["dalti"])
+
+        embed.set_author(name=f"{self.bot.user.name}#{self.bot.user.discriminator}", url=self.bot.user.avatar.url)
+
         embed.add_field(name="Uptime", value=uptime, inline=True)
-        embed.add_field(name="PyCord Version", value=f"`{pycordV}`", inline=True)
-        embed.add_field(name="Shard ID", value=f"Username: {self.bot.user}\nID: {self.bot.user.id}\nCreated At: {self.bot.user.created_at}")
+        embed.add_field(name="PyCord Version", value=f"{pycordV}", inline=True)
+        embed.add_field(name="Resources", value=f"[Repository](https://gitub.com/BruhDark/Dalti) | [Invite](https://discord.com/api/oauth2/authorize?client_id=823941047473274960&permissions=8&scope=bot%20applications.commands)")
 
-
-        embed.set_thumbnail(url=self.bot.user.avatar.url)
-        embed.set_footer(text="Made with ♥️ by Dark")
+        embed.set_footer(text="Made with ♥️")
 
         await ctx.respond(embed=embed)
 
