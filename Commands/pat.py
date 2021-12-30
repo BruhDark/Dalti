@@ -21,7 +21,7 @@ class Pat(commands.Cog):
             color=user.color
         )
 
-        Embed.set_author(name=f"{user.username}", icon_url=f"{user.avatar.url}")
+        Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=f"{user.avatar.url}")
         Embed.set_image(url=f"{image}")
 
         Embed.set_footer(text=f"From {ctx.user}")
