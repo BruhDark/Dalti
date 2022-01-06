@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from discord.commands import Option, slash_command
-from discord.ext import guild
 import datetime
 from config import EMOTES, COLORS
 import math
