@@ -35,7 +35,8 @@ class Whois(commands.Cog):
 
         created  = user.created_at.strftime("%x\n%X %Z")
 
-        roles = [role.mention for role in user.roles[1:]]
+        if not noMember:
+         roles = [role.mention for role in user.roles[1:]]
         
         if not noMember:
          joined = user.joined_at.strftime("%x\n%X %Z")
