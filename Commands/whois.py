@@ -18,11 +18,11 @@ class Whois(commands.Cog):
 
         message = await ctx.respond(embed=Loading)
 
-        u = ctx.author.user.id if member == None else member.id
-        user = discord.Guild.get_member(user_id=u)
+        u = ctx.author if member == None else member
+        user = discord.Guild.get_member(u)
 
         if user == None:
-            user = await self.bot.fetch_user(user_id=u)
+            user = await self.bot.fetch_user(u)
             noMember = True
 
         created  = user.created_at.strftime("%x\n%X %Z")
