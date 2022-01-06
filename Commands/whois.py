@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord.commands import Option, slash_command
 import datetime
+import time
 from config import EMOTES, COLORS
 import math
 
@@ -26,7 +27,7 @@ class Whois(commands.Cog):
             noMember = True
 
         created  = user.created_at.strftime("%x\n%X %Z")
-        secondsc = math.floor(datetime.datetime.utcnow() - user.created_at)
+        secondsc = math.floor(time.time() - user.created_at)
 
         m, s = divmod(secondsc, 60)
         h, m = divmod(m, 60)
@@ -51,7 +52,7 @@ class Whois(commands.Cog):
         if not noMember:
          joined = user.joined_at.strftime("%x\n%X %Z")
 
-         secondsj = math.floor(datetime.datetime.utcnow() - user.joined_at)
+         secondsj = math.floor(time.time() - user.joined_at)
 
          m, s = divmod(secondsj, 60)
          h, m = divmod(m, 60)
