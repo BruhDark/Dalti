@@ -63,10 +63,10 @@ class Whois(commands.Cog):
         if not noMember:
             Embed.add_field(name="Status", value=status, inline=True)
 
-        Embed.add_field(name="Account Created", value=f"{created}\n{createda}", inline=True)
+        Embed.add_field(name="Account Created", value=f"{created}", inline=True)
 
         if not noMember:
-            Embed.add_field(name="Account Joined", value=f"{joined}\n{joineda}", inline=True)
+            Embed.add_field(name="Account Joined", value=f"{joined}", inline=True)
             Embed.addfield(name=f"Roles [{roles.len()}]", value="".join(roles), inline=True)
 
         Embed.set_footer(text=f"ID: {user.id}")
