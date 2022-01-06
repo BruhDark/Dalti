@@ -10,7 +10,7 @@ class Pat(commands.Cog):
 
     @slash_command()
     async def pat(self, ctx: commands.Context, user: Option(discord.Member, "Select a user")):
-        """Pat a user"""
+        """Pat someone"""
         
         request = requests.get("https://some-random-api.ml/animu/pat").json()
         image = request["link"]

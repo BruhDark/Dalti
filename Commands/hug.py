@@ -10,7 +10,7 @@ class Hug(commands.Cog):
 
     @slash_command()
     async def hug(self, ctx: commands.Context, user: Option(discord.Member, "Select a user")):
-        """Hug a user"""
+        """Hug someone"""
         
         request = requests.get("https://some-random-api.ml/animu/hug").json()
         image = request["link"]

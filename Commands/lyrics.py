@@ -10,12 +10,12 @@ class Lyrics(commands.Cog):
         self.bot = bot
 
     @slash_command()
-    async def lyrics(self, ctx, title: Option(str, "Type a song title")):
+    async def lyrics(self, ctx, query: Option(str, "Type a song title, lyric or artist")):
         """Find a song lyrics"""
 
         response = requests.get(f"https://some-random-api.ml/lyrics?title={title}").json()
         
-        try:
+        if response.status_code ==  400:
          eerror = EMOTES["error"]
          cerror = COLORS["error"]
          error = response["error"]
@@ -23,7 +23,7 @@ class Lyrics(commands.Cog):
 
          await ctx.respond(embed=Embed)
             
-        except KeyError:
+        else:
             ti = response["title"]
             author = response["author"]
             lyrics = response["lyrics"]
