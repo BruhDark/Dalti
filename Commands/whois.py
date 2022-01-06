@@ -18,7 +18,7 @@ class Whois(commands.Cog):
 
         message = await ctx.respond(embed=Loading)
 
-        u = ctx.author if member == None else member
+        u = ctx.author.user.id if member == None else member.id
         user = ctx.guild.get_member(u)
 
         if user == None:
