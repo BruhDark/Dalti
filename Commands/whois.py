@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.commands import Option, slash_command
 import datetime
 import time
-from config import EMOTES, COLORS
+from config import EMOTES, COLORS, BADGES
 import math
 
 class Whois(commands.Cog):
@@ -75,6 +75,10 @@ class Whois(commands.Cog):
             Embed.add_field(name="Account Joined", value=f"{joined}", inline=True)
             Embed.add_field(name="Highest Role", value=user.top_role.mention)
             Embed.add_field(name=f"Roles [{len(roles)}]", value=", ".join(roles), inline=True)
+
+        flags = []
+        f = user.public_flags
+        print(f)
 
         Embed.set_footer(text=f"ID: {user.id}")
 

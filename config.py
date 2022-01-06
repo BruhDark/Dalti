@@ -32,4 +32,19 @@ COLORS = {
     "dalti": discord.Colour.from_rgb(230, 234, 240)
     }
 
+BADGES = {
+    "bot": "<:Bot:928765691778203719>",
+    "bughunter": "<:BugHunter:928765827107422268>",
+    "moderator": "<:DiscordCertifiedModerator:881971670921916518>",
+    "staff": "<:DiscordStaff:882405445136965633>",
+    "events": "<:HypeSquadEvents:928765434281488534>",
+    "balance": "<:HypeSquad_Balance:928765104110047273>",
+    "bravery": "<:HypeSquad_Bravery:928765052427841628>",
+    "brilliance": "<:HypeSquad_Brilliance:928764974103404554>",
+    "verifiedbot": "<:VerifiedBot:848277286927073280>",
+    "bughunter2": "<:BugHunter:928768063933939783>",
+    "partner": "<:DiscordPartner:928768159215923230>",
+    "early": "<:EarlySupporter:928768119072231454>"
+}
+
 ACTIVITY = "with toys"
