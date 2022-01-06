@@ -72,7 +72,7 @@ class Whois(commands.Cog):
         Embed.set_footer(text=f"ID: {user.id}")
 
         message = await ctx.interaction.original_message()
-        message.edit(embed=Embed)
+        await message.edit(embed=Embed)
 
 def setup(bot):
     bot.add_cog(Whois(bot))
