@@ -19,13 +19,16 @@ class Whois(commands.Cog):
 
         await ctx.respond(embed=Loading)
 
-        u = ctx.author.user.id if member == None else member.id
-        user = ctx.guild.get_member(u)
+        if member == None:
+            id = ctx.author.id
+        elif type(member) == "int":
+            id = member
 
-        noMember = True
+        user = ctx.guild.get_member(id)
+        noMember = False
 
         if user == None:
-            user = await self.bot.fetch_user(u)
+            user = await self.bot.fetch_user(id)
             noMember = True
 
         created  = user.created_at.strftime("%x\n%X %Z")
