@@ -13,7 +13,7 @@ class Lyrics(commands.Cog):
     async def lyrics(self, ctx, query: Option(str, "Type a song title, lyric or artist")):
         """Find a song lyrics"""
 
-        response = requests.get(f"https://some-random-api.ml/lyrics?title={title}").json()
+        response = requests.get(f"https://some-random-api.ml/lyrics?title={query}").json()
         
         if response.status_code ==  400:
          eerror = EMOTES["error"]
