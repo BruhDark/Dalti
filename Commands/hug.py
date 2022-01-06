@@ -16,7 +16,7 @@ class Hug(commands.Cog):
         image = request["link"]
 
         Embed = discord.Embed(
-            description=f"{ctx.author.mention} pats {user.mention}. uwu",
+            description=f"{ctx.author.mention} hugs {user.mention}. uwu",
             timestamp=datetime.datetime.utcnow(),
             color=user.color
         )
