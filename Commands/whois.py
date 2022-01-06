@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord.commands import Option, slash_command
 import datetime
+import time
 from config import EMOTES, COLORS
 import math
 
@@ -26,7 +27,8 @@ class Whois(commands.Cog):
             noMember = True
 
         created  = user.created_at.strftime("%x\n%X %Z")
-        secondsc = math.floor(discord.utils.utcnow - user.created_at)
+        c = user.created_at
+        secondsc = math.floor(time.time() - c)
 
         m, s = divmod(secondsc, 60)
         h, m = divmod(m, 60)
@@ -50,8 +52,9 @@ class Whois(commands.Cog):
         
         if not noMember:
          joined = user.joined_at.strftime("%x\n%X %Z")
+         j = user.joined_at
 
-         secondsj = math.floor(discord.utils.utcnow - user.joined_at)
+         secondsj = math.floor(time.time() - j)
 
          m, s = divmod(secondsj, 60)
          h, m = divmod(m, 60)
@@ -96,13 +99,13 @@ class Whois(commands.Cog):
         Embed.set_thumbnail(url=user.avatar)
 
         if not noMember:
-            Embed.add_field(name="Status", value=status)
+            Embed.add_field(name="Status", value=status, inline=True)
 
         Embed.add_field(name="Account Created", value=f"{created}\n{createda}", inline=True)
 
         if not noMember:
-            Embed.add_field(name="Account Joined", value=f"{joined}\n{joineda}")
-            Embed.addfield(name=f"Roles [{roles.len()}]", value="".join(roles))
+            Embed.add_field(name="Account Joined", value=f"{joined}\n{joineda}", inline=True)
+            Embed.addfield(name=f"Roles [{roles.len()}]", value="".join(roles), inline=True)
 
         Embed.set_footer(text=f"ID: {user.id}")
 
