@@ -109,3 +109,5 @@ class Whois:
 
         message.edit(embed=Embed)
 
+def setup(bot):
+    bot.add_cog(Whois(bot))
