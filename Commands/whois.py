@@ -10,7 +10,7 @@ class Whois(commands.Cog):
         self.bot = bot
 
     @slash_command()
-    async def whois(self, ctx, member: Option(discord.Member, "Specify a user", required=False, default=None)):
+    async def whois(self, ctx: commands.Context, member: Option(discord.Member, "Specify a user", required=False, default=None)):
         """Get information about a user."""
 
         load = EMOTES["loading"]
@@ -19,7 +19,7 @@ class Whois(commands.Cog):
         message = await ctx.respond(embed=Loading)
 
         u = ctx.author if member == None else member
-        user = discord.Guild.get_member(u)
+        user = ctx.guild.get_member(u)
 
         if user == None:
             user = await self.bot.fetch_user(u)
