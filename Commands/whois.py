@@ -21,7 +21,7 @@ class Whois(commands.Cog):
 
         if member == None:
             id = ctx.author.id
-        elif type(member) == "int":
+        elif type(member) == int:
             id = member
         else:
             id = member.id
