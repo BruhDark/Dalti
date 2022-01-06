@@ -24,6 +24,7 @@ class Whois(commands.Cog):
 
         if user == None:
             user = await self.bot.fetch_user(u)
+            global noMember
             noMember = True
 
         created  = user.created_at.strftime("%x\n%X %Z")
