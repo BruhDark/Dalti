@@ -5,7 +5,7 @@ import datetime
 from config import EMOTES, COLORS
 import math
 
-class Whois:
+class Whois(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
