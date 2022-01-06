@@ -17,7 +17,7 @@ class Whois(commands.Cog):
         load = EMOTES["loading"]
         Loading = discord.Embed(description=f"{load} Fetching user...", color=COLORS["info"])
 
-        message = await ctx.respond(embed=Loading)
+        await ctx.respond(embed=Loading)
 
         u = ctx.author.user.id if member == None else member.id
         user = ctx.guild.get_member(u)
@@ -71,6 +71,7 @@ class Whois(commands.Cog):
 
         Embed.set_footer(text=f"ID: {user.id}")
 
+        message = await ctx.interaction.original_message()
         message.edit(embed=Embed)
 
 def setup(bot):
