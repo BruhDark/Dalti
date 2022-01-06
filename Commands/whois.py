@@ -22,9 +22,10 @@ class Whois(commands.Cog):
         u = ctx.author.user.id if member == None else member.id
         user = ctx.guild.get_member(u)
 
+        noMember = True
+
         if user == None:
             user = await self.bot.fetch_user(u)
-            global noMember
             noMember = True
 
         created  = user.created_at.strftime("%x\n%X %Z")
