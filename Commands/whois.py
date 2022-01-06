@@ -23,6 +23,8 @@ class Whois(commands.Cog):
             id = ctx.author.id
         elif type(member) == "int":
             id = member
+        else:
+            id = member.id
 
         user = ctx.guild.get_member(id)
         noMember = False
