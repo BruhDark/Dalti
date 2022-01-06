@@ -27,51 +27,11 @@ class Whois(commands.Cog):
             noMember = True
 
         created  = user.created_at.strftime("%x\n%X %Z")
-        c = user.created_at
-        secondsc = math.floor(time.time() - c)
-
-        m, s = divmod(secondsc, 60)
-        h, m = divmod(m, 60)
-        d, h = divmod(h, 24)
-
-        days, hours, minutes, seconds = None, None, None, None
-
-        if d:
-            days = f"{d} Day(s)"
-        if h:
-            hours = f"{h} Hour(s)"
-        if m:
-            minutes = f"{m} Minute(s)"
-        if s:
-            seconds = f"{s} Seconds"
-
-        createda = f"{days or ''} {hours or ''} {minutes or ''} {seconds or ''} ago".strip()
-
 
         roles = [role.mention for role in user.roles[1:]]
         
         if not noMember:
          joined = user.joined_at.strftime("%x\n%X %Z")
-         j = user.joined_at
-
-         secondsj = math.floor(time.time() - j)
-
-         m, s = divmod(secondsj, 60)
-         h, m = divmod(m, 60)
-         d, h = divmod(h, 24)
-
-         days, hours, minutes, seconds = None, None, None, None
-
-         if d:
-            days = f"{d} Day(s)"
-         if h:
-            hours = f"{h} Hour(s)"
-         if m:
-            minutes = f"{m} Minute(s)"
-         if s:
-            seconds = f"{s} seconds"
-
-         joineda = f"{days or ''} {hours or ''} {minutes or ''} {seconds or ''} ago".strip()
 
         if not noMember:
          x = user.raw_status
