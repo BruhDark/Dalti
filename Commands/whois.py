@@ -14,10 +14,7 @@ class Whois(commands.Cog):
     async def whois(self, ctx: commands.Context, member: Option(discord.Member, "Specify a user", required=False, default=None)):
         """Get information about a user."""
 
-        load = EMOTES["loading"]
-        Loading = discord.Embed(description=f"{load} Fetching user...", color=COLORS["info"])
-
-        await ctx.respond(embed=Loading)
+        await ctx.defer()
 
         if member == None:
             id = ctx.author.id
@@ -87,6 +84,10 @@ class Whois(commands.Cog):
             partner = BADGES["partner"]
             flags.append(f"{partner} Partnered Server Owner")
 
+        if user.public_flags.discord_certified_moderator:
+            moderator = BADGES["moderator"]
+            flags.append(f"{moderator} Discord Certified Moderator")
+
         if user.public_flags.verified_bot_developer or user.public_flags.early_verified_bot_developer:
             botdev = BADGES["botdev"]
             flags.append(f"{botdev} Verified Bot Developer")
@@ -119,20 +120,16 @@ class Whois(commands.Cog):
             balance = BADGES["balance"]
             flags.append(f"{balance} Hypequad Balance")
 
+        if user.bot:
+            bot = BADGES["bot"]
+            flags.append(f"{bot} Bot")
+
         if user.public_flags.verified_bot:
             verifiedbot = BADGES["verifiedbot"]
         
             flags.append(f"{verifiedbot} Verified Bot")
 
-        if user.public_flags.discord_certified_moderator:
-            moderator = BADGES["moderator"]
-            flags.append(f"{moderator} Discord Certified Moderator")
 
-        if user.bot:
-            bot = BADGES["bot"]
-            flags.append(f"{bot} Bot")
-
-        
         Embed.add_field(name="Profile Badges", value="\n".join(flags))
 
         Embed.set_footer(text=f"ID: {user.id}")
