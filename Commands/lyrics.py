@@ -15,7 +15,7 @@ class Lyrics(commands.Cog):
 
         response = requests.get(f"https://some-random-api.ml/lyrics?title={query}").json()
         
-        if response.status_code ==  400:
+        try:
          eerror = EMOTES["error"]
          cerror = COLORS["error"]
          error = response["error"]
@@ -23,7 +23,7 @@ class Lyrics(commands.Cog):
 
          await ctx.respond(embed=Embed)
             
-        else:
+        except KeyError:
             ti = response["title"]
             author = response["author"]
             lyrics = response["lyrics"]
