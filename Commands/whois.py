@@ -35,6 +35,9 @@ class Whois(commands.Cog):
         if not noMember:
          roles = [role.mention for role in user.roles[1:]]
          roles.reverse()
+
+        if len(roles) == 0:
+            roles.append("None")
         
         if not noMember:
          joined = user.joined_at.strftime("%x\n%X %Z")
@@ -54,7 +57,7 @@ class Whois(commands.Cog):
              status = EMOTES["offline"]
 
          else:
-             status = "Unknown"
+             status = EMOTES["question"]
 
         color = user.color if not noMember else COLORS["dalti"]
         amember = "**This user is not a member of this server.**" if noMember else ""
@@ -65,14 +68,16 @@ class Whois(commands.Cog):
         Embed.set_thumbnail(url=user.avatar)
 
         if not noMember:
-            Embed.add_field(name="Status", value=status, inline=True)
+            Embed.add_field(name="Status", value=status, inline=False)
 
         Embed.add_field(name="Account Created", value=f"{created}", inline=True)
 
         if not noMember:
             Embed.add_field(name="Account Joined", value=f"{joined}", inline=True)
             Embed.add_field(name="Highest Role", value=user.top_role.mention)
-            Embed.add_field(name=f"Roles [{len(roles)}]", value=", ".join(roles), inline=True)
+
+            if "None" not in roles:
+             Embed.add_field(name=f"Roles [{len(roles)}]", value=", ".join(roles), inline=False)
 
         flags = []
         
@@ -132,12 +137,13 @@ class Whois(commands.Cog):
         if len(flags) == 0:
             flags.append("None")
 
-        Embed.add_field(name="Profile Badges", value="\n".join(flags))
+
+        if "None" not in flags:
+         Embed.add_field(name="Profile Badges", value="\n".join(flags), inline=False)
 
         Embed.set_footer(text=f"ID: {user.id}")
 
-        message = await ctx.interaction.original_message()
-        await message.edit(embed=Embed)
+        await ctx.respond(embed=Embed)
 
 def setup(bot):
     bot.add_cog(Whois(bot))

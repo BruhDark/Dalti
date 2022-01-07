@@ -5,7 +5,7 @@ from discord.ext.commands.bot import when_mentioned_or
 from discord.commands import slash_command
 from config import PREFIX, ACTIVITY, DESCRIPTION
 import datetime, time
-from config import COLORS
+from config import COLORS, EMOTES
 import math
 import random
 import json
@@ -87,13 +87,13 @@ class Stats(commands.Cog):
         srailway = s["status"]
 
         if srailway == "UP":
-            srailway =  "Up"
+            srailway =  EMOTES["operational"]
         elif srailway == "HASISSUES":
-            srailway = "Has Issues"
+            srailway = EMOTES["partialoutage"]
         elif srailway == "UNDERMAINTENANCE":
-            srailway = "Under Maintenance"
+            srailway = EMOTES["maintenance"]
         else:
-            srailway = "Unknown"
+            srailway = EMOTES["question"]
 
         pycordV = discord.__version__
 

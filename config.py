@@ -6,22 +6,23 @@ DESCRIPTION = "Dalti is a multi-purpose bot. Just a cool bot, what else do we ne
 EMOTES = {
     "success": "<:daltiSuccess:923699355779731476>",
     "error": "<:daltiError:923699414646816768>",
-    "green": "<:green:881971370634924063>",
-    "yellow": "<:yellow:881971305749028944>",
-    "red": "<:red:881971454369988608>",
-    "blue": "<:blue:881971628106481694>",
-    "grey": "<:grey:881971588973609041>",
-    "chain": "<:chain:881974754293215252>",
-    "warning": ":warning",
+
+    "warning": ":warning:",
     "info": "<:info:881973831974154250>",
-    "gdot": "<:gdot:882404710148083724>",
-    "ydot": "<:rdot:882404641286000681>",
-    "rdot": "<:ydot:882404755949895730>",
+    "question": "<:Question:929051955962195999>",
+
+    "operational": "<:Operational:882404710148083724>",
+    "partialoutage": "<:PartialOutage:882404641286000681>",
+    "majoroutage": "<:MajorOutage:882404755949895730>",
+    "maintenance": "<:UnderMaintenance:881969909247148052>",
+
     "dnd": "<:DoNotDisturb:928716110822518834>",
-    "idle": "<:Idle:928716214686072842>",
+    "idle": "<:Idle:929049988573581352>",
     "online": "<:Online:928716318054694993>",
     "offline": "<:Offline:928716879474851870>",
-    "loading": "<a:loading:928730342964211712>"
+
+    "loading": "<a:loading:928730342964211712>",
+    "spotify": "<:Spotify:929060525881565224>",
 }
 
 COLORS = {
