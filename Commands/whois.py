@@ -129,6 +129,8 @@ class Whois(commands.Cog):
         
             flags.append(f"{verifiedbot} Verified Bot")
 
+        if len(flags) == 0:
+            flags.append("None")
 
         Embed.add_field(name="Profile Badges", value="\n".join(flags))
 
