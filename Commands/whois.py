@@ -37,6 +37,7 @@ class Whois(commands.Cog):
 
         if not noMember:
          roles = [role.mention for role in user.roles[1:]]
+         roles.reverse()
         
         if not noMember:
          joined = user.joined_at.strftime("%x\n%X %Z")
@@ -77,8 +78,62 @@ class Whois(commands.Cog):
             Embed.add_field(name=f"Roles [{len(roles)}]", value=", ".join(roles), inline=True)
 
         flags = []
-        f = user.public_flags
-        print(f)
+        
+        if user.public_flags.staff:
+            staff = BADGES["staff"]
+            flags.append(f"{staff} Discord Staff")
+
+        if user.public_flags.partner:
+            partner = BADGES["partner"]
+            flags.append(f"{partner} Partnered Server Owner")
+
+        if user.public_flags.verified_bot_developer or user.public_flags.early_verified_bot_developer:
+            botdev = BADGES["botdev"]
+            flags.append(f"{botdev} Verified Bot Developer")
+
+        if user.public_flags.bughunter:
+            bughunter = BADGES["bughunter"]
+            flags.append(f"{bughunter} Bug Hunter")
+
+        if user.public_flags.bug_hunter_level_2:
+            bughunter2 = BADGES["bughunter2"]
+            flags.append(f"{bughunter2} Bug Hunter")
+
+        if user.public_flags.early_supporter:
+            early = BADGES["early"]
+            flags.append(f"{early} Early Supporter")
+        
+        if user.public_flags.hypesquad:
+            events = BADGES["events"]
+            flags.append(f"{events} Hypesquad Events")
+
+        if user.public_flags.hypesquad_bravery:
+            bravery = BADGES["bravery"]
+            flags.append(f"{bravery} Hypequad Bravery")
+
+        if user.public_flags.hypesquad_brilliance:
+            brilliance = BADGES["brilliance"]
+            flags.append(f"{brilliance} Hypequad Brilliance")
+
+        if user.public_flags.hypesquad_balance:
+            balance = BADGES["balance"]
+            flags.append(f"{balance} Hypequad Balance")
+
+        if user.public_flags.verified_bot:
+            verifiedbot = BADGES["verfiedbot"]
+        
+            flags.append(f"{verifiedbot} Verified Bot")
+
+        if user.public_flags.discord_certified_moderator:
+            moderator = BADGES["moderator"]
+            flags.append(f"{moderator} Discord Certified Moderator")
+
+        if user.bot:
+            bot = BADGES["bot"]
+            flags.append(f"{bot} Bot")
+
+        
+        Embed.add_field(name="Profile Badges", value="\n".join(flags))
 
         Embed.set_footer(text=f"ID: {user.id}")
 

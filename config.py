@@ -44,7 +44,8 @@ BADGES = {
     "verifiedbot": "<:VerifiedBot:848277286927073280>",
     "bughunter2": "<:BugHunter:928768063933939783>",
     "partner": "<:DiscordPartner:928768159215923230>",
-    "early": "<:EarlySupporter:928768119072231454>"
+    "early": "<:EarlySupporter:928768119072231454>",
+    "botdev": "<:VerfiedBotDeveloper:928765568058785852>"
 }
 
 ACTIVITY = "with toys"
