@@ -30,7 +30,7 @@ COLORS = {
     "error": discord.Colour.from_rgb(240, 74, 71),
     "warning": discord.Colour.from_rgb(255, 155, 0),
     "info": discord.Colour.from_rgb(113, 134, 213),
-    "dalti": discord.Colour.from_rgb(230, 234, 240)
+    "normal": discord.Colour.from_rgb(94, 23, 235)
     }
 
 BADGES = {

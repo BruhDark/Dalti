@@ -3,6 +3,7 @@ import discord
 import os
 from discord.ext.commands.bot import when_mentioned_or
 from discord.commands import slash_command
+from discord.ext import tasks
 from config import PREFIX, ACTIVITY, DESCRIPTION
 import datetime, time
 from config import COLORS, EMOTES
@@ -13,22 +14,14 @@ import urllib
 
 def main():
     intents = discord.Intents.all()
-    Dalti = commands.Bot(command_prefix=when_mentioned_or(PREFIX), 
+    Bot = commands.Bot(command_prefix=when_mentioned_or(PREFIX), 
     intents=intents)
 
-    act = discord.Game(ACTIVITY)
-
-    @Dalti.event
+    @Bot.event
     async def on_connect():
         print("Connected.")
 
-        await Dalti.register_commands()
-
-        try:
-         await Dalti.change_presence(status=discord.Status.online, activity=act)
-     
-        except discord.InvalidArgument:
-         pass
+        await Bot.register_commands()
 
         loaded = False
 
@@ -38,19 +31,33 @@ def main():
          loaded = True
 
 
-    @Dalti.event
+    @Bot.event
     async def on_ready():
-     print(f"Ready. Logged in as {Dalti.user} - ID: {Dalti.user.id}")
+     print(f"Ready. Logged in as {Bot.user} - ID: {Bot.user.id}")
      print("---------")
     
     for command in os.listdir("Commands"):
         if command.endswith(".py") and not command.endswith("_"):
-          Dalti.load_extension(f"Commands.{command[:-3]}")
+          Bot.load_extension(f"Commands.{command[:-3]}")
           print(f"Loaded command: {command}")
 
-    Dalti.add_cog(Stats(Dalti))
+    Bot.add_cog(Stats(Bot))
+
+    @tasks.loop(seconds=300)
+    async def counter():
+        users = Bot.users
+        guilds = Bot.guilds
+        cusers = len(users)
+        cguilds = len(guilds)
+
+        await Bot.change_presence(activity=discord.Streaming(name=f"{cguilds} and {cusers}", url="https://www.twitch.tv/oknosofficial"))
+
     
-    Dalti.run(os.environ["DISCORD_TOKEN"])
+    @counter.before_loop
+    async def beforeLoop():
+        await Bot.wait_until_ready()
+
+    Bot.run(os.environ["DISCORD_TOKEN"])
 
 # Stats command here to avoid import up
 class Stats(commands.Cog):

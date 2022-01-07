@@ -59,7 +59,7 @@ class Whois(commands.Cog):
          else:
              status = EMOTES["question"]
 
-        color = user.color if not noMember else COLORS["dalti"]
+        color = user.color if not noMember else COLORS["normal"]
         amember = "**This user is not a member of this server.**" if noMember else ""
 
         Embed = discord.Embed(color=color, timestamp=datetime.datetime.utcnow(), description=f"{user.mention}\n{amember}")
