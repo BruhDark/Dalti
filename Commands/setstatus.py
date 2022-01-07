@@ -9,9 +9,9 @@ eerror = EMOTES["error"]
 esuccess = EMOTES["success"]
 cerror = COLORS["error"]
 csuccess = COLORS["success"]
-online = EMOTES["green"]
-idle = EMOTES["yellow"]
-dnd = EMOTES["red"]
+online = EMOTES["online"]
+idle = EMOTES["idle"]
+dnd = EMOTES["dnd"]
 
 act = discord.Game(ACTIVITY)
 
