@@ -23,12 +23,7 @@ def main():
 
         await Bot.register_commands()
 
-        users = Bot.users
-        guilds = Bot.guilds
-        cusers = len(users)
-        cguilds = len(guilds)
-
-        await Bot.change_presence(activity=discord.Streaming(name=f"{cguilds} and {cusers}", url="https://www.twitch.tv/oknosofficial"))
+        await Bot.change_presence(activity=discord.Streaming(name="Meet Oknos", url="https://www.twitch.tv/oknosofficial"))
 
         loaded = False
 
@@ -49,20 +44,6 @@ def main():
           print(f"Loaded command: {command}")
 
     Bot.add_cog(Stats(Bot))
-
-    @tasks.loop(seconds=300)
-    async def counter():
-        users = Bot.users
-        guilds = Bot.guilds
-        cusers = len(users)
-        cguilds = len(guilds)
-
-        await Bot.change_presence(activity=discord.Streaming(name=f"{cguilds} and {cusers}", url="https://www.twitch.tv/oknosofficial"))
-
-    
-    @counter.before_loop
-    async def beforeLoop():
-        await Bot.wait_until_ready()
 
     Bot.run(os.environ["DISCORD_TOKEN"])
 
