@@ -1,11 +1,11 @@
 import discord
 
-PREFIX = "d!"
-DESCRIPTION = "Dalti is a multi-purpose bot. Just a cool bot, what else do we need to say?"
+PREFIX = "o!"
+DESCRIPTION = "Say hello to Oknos. A new intelligence developed on Python\n*Meet the new bots era, with Oknos.*"
 
 EMOTES = {
-    "success": "<:daltiSuccess:923699355779731476>",
-    "error": "<:daltiError:923699414646816768>",
+    "success": "<:OknosSuccess:923699355779731476>",
+    "error": "<:OknosError:923699414646816768>",
 
     "warning": ":warning:",
     "info": "<:info:881973831974154250>",
@@ -23,6 +23,7 @@ EMOTES = {
 
     "loading": "<a:loading:928730342964211712>",
     "spotify": "<:Spotify:929060525881565224>",
+    "oknos": "<:Oknos:929080635249791116>",
 }
 
 COLORS = {

@@ -104,16 +104,19 @@ class Stats(commands.Cog):
 
         pycordV = discord.__version__
 
-        embed = discord.Embed(description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=COLORS["dalti"])
+        embed = discord.Embed(description=DESCRIPTION, timestamp=datetime.datetime.utcnow(), color=COLORS["normal"])
 
         embed.set_author(name=f"{self.bot.user.name}#{self.bot.user.discriminator}", icon_url=self.bot.user.avatar.url)
 
         l = [":saxophone::bug:", "2.1.0-b"]
         c = random.choice(l)
 
+        oknos = EMOTES["oknos"]
+
+        embed.add_field(name=f"{oknos} Oknos Version", value=c, inline=True)
         embed.add_field(name=":clock1: Uptime", value=uptime, inline=True)
-        embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=True)
-        embed.add_field(name=":service_dog: Dalti Version", value=c, inline=True)
+        
+        embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=False)
         embed.add_field(name="🚄 Railway Status", value=srailway, inline=True)
         embed.add_field(name=":package: Resources", value=f"[Repository](https://github.com/BruhDark/Dalti) | [Last Commit](https://github.com/BruhDark/Dalti/commit/main) | [Invite](https://discord.com/oauth2/authorize?client_id=823941047473274960&permissions=1635242211574&scope=bot%20applications.commands)")
 
