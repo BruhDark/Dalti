@@ -23,7 +23,7 @@ class Spotify(commands.Cog):
 
         if user != None:
     
-            if user.spotify.type == "listening" or "Listening":
+            if type(member.activity) == discord.Spotify:
 
                 x = user.raw_status
                 if x == "online":
@@ -49,21 +49,21 @@ class Spotify(commands.Cog):
                 Embed = discord.Embed(description=f"{user.mention} | {status}", timestamp=datetime.datetime.utcnow(), color=user.color)
                 Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=avatar)
 
-                Embed.set_thumbnail(url=user.spotify.album_cover_url)
+                Embed.set_thumbnail(url=user.activity.album_cover_url)
 
-                artists = user.spotify.artists
+                artists = user.activity.artists
 
-                Embed.add_field(name="Song", value=user.spotify.title, inline=True)
-                Embed.add_field(name="Duration", value=user.spotify.duration)
+                Embed.add_field(name="Song", value=user.activity.title, inline=True)
+                Embed.add_field(name="Duration", value=user.activity.duration)
                 Embed.add_field(name="Artist", value=", ".join(artists))
-                Embed.add_field(name="Album", value=user.spotify.album)
+                Embed.add_field(name="Album", value=user.activity.album)
 
                 Embed.set_footer(text=f"ID: {member.id}", icon_url="https://emoji.gg/assets/emoji/7370_Spotify.png")
 
                 emoji = EMOTES["spotify"]
 
                 view = discord.ui.View()
-                view.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.spotify.track_url, style=discord.ButtonStyle.url))
+                view.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
 
                 ctx.respond(embed=Embed, view=view)
 
