@@ -36,7 +36,7 @@ class Lyrics(commands.Cog):
             Embed = discord.Embed(title=f"{ti} - By {author}", 
             url=f"{links}", 
             description=f"{lyrics}",
-            color=COLORS["dalti"],
+            color=COLORS["normal"],
             timestamp=datetime.datetime.utcnow())
 
             Embed.set_thumbnail(url=f"{thumbnail}")
