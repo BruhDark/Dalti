@@ -60,9 +60,13 @@ class Whois(commands.Cog):
         amember = "**This user is not a member of this server.**" if noMember else ""
 
         Embed = discord.Embed(color=color, timestamp=datetime.datetime.utcnow(), description=f"{user.mention}\n{amember}")
+        
+        avatar = user.avatar
+        if avatar == None:
+           avatar = user.default_avatar
 
-        Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=user.avatar)
-        Embed.set_thumbnail(url=user.avatar)
+        Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=avatar)
+        Embed.set_thumbnail(url=avatar)
 
         if not noMember:
             Embed.add_field(name="Status", value=status, inline=True)
