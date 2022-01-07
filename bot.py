@@ -54,7 +54,7 @@ class Stats(commands.Cog):
 
     @slash_command()
     async def stats(self, ctx):
-        """Get Dalti's stats"""
+        """View stats about Oknos"""
 
         seconds = math.floor(time.time() - started)
 
@@ -101,10 +101,10 @@ class Stats(commands.Cog):
 
         oknos = EMOTES["oknos"]
 
-        embed.add_field(name=f"{oknos} Oknos Version", value=c, inline=True)
+        embed.add_field(name=f"{oknos} Oknos Version", value="2.2.3-b", inline=True)
         embed.add_field(name=":clock1: Uptime", value=uptime, inline=True)
         
-        embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=False)
+        embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=True)
         embed.add_field(name="🚄 Railway Status", value=srailway, inline=True)
         embed.add_field(name=":package: Resources", value=f"[Repository](https://github.com/BruhDark/Dalti) | [Last Commit](https://github.com/BruhDark/Dalti/commit/main) | [Invite](https://discord.com/oauth2/authorize?client_id=823941047473274960&permissions=1635242211574&scope=bot%20applications.commands)")
 
