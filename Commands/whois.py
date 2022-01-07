@@ -91,7 +91,7 @@ class Whois(commands.Cog):
             botdev = BADGES["botdev"]
             flags.append(f"{botdev} Verified Bot Developer")
 
-        if user.public_flags.bughunter:
+        if user.public_flags.bug_hunter:
             bughunter = BADGES["bughunter"]
             flags.append(f"{bughunter} Bug Hunter")
 
