@@ -23,6 +23,13 @@ def main():
 
         await Bot.register_commands()
 
+        users = Bot.users
+        guilds = Bot.guilds
+        cusers = len(users)
+        cguilds = len(guilds)
+
+        await Bot.change_presence(activity=discord.Streaming(name=f"{cguilds} and {cusers}", url="https://www.twitch.tv/oknosofficial"))
+
         loaded = False
 
         if not loaded:
