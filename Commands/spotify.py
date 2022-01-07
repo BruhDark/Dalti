@@ -75,3 +75,6 @@ class Spotify(commands.Cog):
             error = EMOTES["error"]
             Embed = discord.Embed(description=f"{error} Couldn't find this member", color=COLORS["error"])
             ctx.respond(embed=Embed)
+
+def setup(bot):
+    bot.add_cog(Spotify(bot))
