@@ -23,7 +23,7 @@ class Spotify(commands.Cog):
 
         if user != None:
     
-            if type(member.activity) == discord.Spotify:
+            if type(user.activity) == discord.Spotify:
 
                 x = user.raw_status
                 if x == "online":
