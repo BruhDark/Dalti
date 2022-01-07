@@ -120,7 +120,7 @@ class Whois(commands.Cog):
             flags.append(f"{balance} Hypequad Balance")
 
         if user.public_flags.verified_bot:
-            verifiedbot = BADGES["verfiedbot"]
+            verifiedbot = BADGES["verifiedbot"]
         
             flags.append(f"{verifiedbot} Verified Bot")
 
