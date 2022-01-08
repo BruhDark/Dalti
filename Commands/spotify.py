@@ -12,6 +12,8 @@ class Spotify(commands.Cog):
     async def spotify(self, ctx: commands.Context, member: Option(discord.Member, "Select a user", required=False, default=None)):
         """Get Spotify stats of someone or yourself"""
 
+        await ctx.defer()
+
         if member == None:
             id = ctx.author.id
         elif type(member) == int:
@@ -23,7 +25,9 @@ class Spotify(commands.Cog):
 
         if user is not None:
     
+
          if type(user.activity) == discord.Spotify:
+
 
              x = user.raw_status
              if x == "online":
@@ -60,14 +64,17 @@ class Spotify(commands.Cog):
              Embed.add_field(name="Artist", value=", ".join(artists), inline=False)
              Embed.add_field(name="Album", value=user.activity.album, inline=True)
 
+
              Embed.set_footer(text=f"ID: {user.id}", icon_url="https://emoji.gg/assets/emoji/7370_Spotify.png")
 
              emoji = EMOTES["spotify"]
+
 
              View = discord.ui.View()
              View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
 
              await ctx.respond(embed=Embed, view=View)
+
 
          else:
              error = EMOTES["error"]
