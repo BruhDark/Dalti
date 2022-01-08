@@ -65,7 +65,7 @@ class Spotify(commands.Cog):
                 emoji = EMOTES["spotify"]
 
                 View = discord.ui.View()
-                view.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
+                View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
 
                 ctx.respond(embed=Embed, view=View)
 
