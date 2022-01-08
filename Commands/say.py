@@ -11,7 +11,7 @@ class Say(commands.Cog):
 
     @slash_command()
     async def say(self, ctx, arguments: str):
-        """Return what you said as Dalti"""
+        """Say something as Oknos"""
 
         if ctx.author.id in AUTHORIZED:
 
