@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.commands import Option, slash_command
 import datetime
 import time
-from config import EMOTES, COLORS, BADGES
+from config import EMOTES, BADGES, VERSIONS
 import math
 
 class Whois(commands.Cog):
@@ -59,7 +59,10 @@ class Whois(commands.Cog):
          else:
              status = EMOTES["question"]
 
-        color = user.color if not noMember else COLORS["normal"]
+        color = user.color if not noMember else VERSIONS[f"{self.bot.user.id}"]
+        if user.id == self.bot.user.id:
+            color = VERSIONS[f"{self.bot.user.id}"]
+
         amember = "**This user is not a member of this server.**" if noMember else ""
 
         Embed = discord.Embed(color=color, timestamp=datetime.datetime.utcnow(), description=f"{user.mention}\n{amember}")

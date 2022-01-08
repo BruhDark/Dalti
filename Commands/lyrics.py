@@ -3,7 +3,7 @@ from discord.commands import slash_command, Option
 from discord.ext import commands
 import requests
 import datetime
-from config import COLORS, EMOTES
+from config import COLORS, EMOTES, VERSIONS
 
 class Lyrics(commands.Cog):
     def __init__(self, bot):
@@ -36,7 +36,9 @@ class Lyrics(commands.Cog):
             Embed = discord.Embed(title=f"{ti} - By {author}", 
             url=f"{links}", 
             description=f"{lyrics}",
-            color=COLORS["normal"],
+
+            color=VERSIONS[f"{self.bot.user.id}"],
+
             timestamp=datetime.datetime.utcnow())
 
             Embed.set_thumbnail(url=f"{thumbnail}")

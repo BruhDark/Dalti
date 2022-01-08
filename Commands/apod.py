@@ -2,6 +2,7 @@ from discord.commands import slash_command, Option
 from discord.ext import commands
 import discord
 import requests
+from config import VERSIONS
 
 class Apod(commands.Cog):
     def __init__(self, bot):
@@ -17,10 +18,10 @@ class Apod(commands.Cog):
 
      Embed = discord.Embed(title=response["title"],
      description=exp,
-     color=discord.Color.from_rgb(102,106,242))
+     color=VERSIONS[f"{self.bot.user.id}"])
 
      Embed.set_image(url=response["hdurl"])
-     Embed.set_footer(text="© NASA - {}".format(response["date"]), icon_url="https://media.discordapp.net/attachments/881968886248009821/923706098769358848/NASA_logo.png")
+     Embed.set_footer(text="NASA's APOD - {}".format(response["date"]), icon_url="https://media.discordapp.net/attachments/881968886248009821/923706098769358848/NASA_logo.png")
 
      await ctx.respond(embed=Embed)
 
