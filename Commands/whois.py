@@ -36,8 +36,8 @@ class Whois(commands.Cog):
          roles = [role.mention for role in user.roles[1:]]
          roles.reverse()
 
-        if len(roles) == 0:
-            roles.append("None")
+         if len(roles) == 0:
+             roles.append("None")
         
         if not noMember:
          joined = user.joined_at.strftime("%x\n%X %Z")
