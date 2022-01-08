@@ -23,7 +23,8 @@ EMOTES = {
 
     "loading": "<a:loading:928730342964211712>",
     "spotify": "<:Spotify:929060525881565224>",
-    "oknos": "<:Oknos:929080635249791116>",
+    "823941047473274960": "<:Oknos:929080635249791116>",
+    "912846359789461525": "<:OknosLocal:929459233899048960>"
 }
 
 COLORS = {
@@ -31,8 +32,14 @@ COLORS = {
     "error": discord.Colour.from_rgb(240, 74, 71),
     "warning": discord.Colour.from_rgb(255, 155, 0),
     "info": discord.Colour.from_rgb(113, 134, 213),
-    "normal": discord.Colour.from_rgb(94, 23, 235)
     }
+
+VERSIONS = {
+    "823941047473274960": discord.Colour.from_rgb(94, 23, 235),
+    "912846359789461525": discord.Colour.from_rgb(255,145,77)
+}
+
+AUTHORIZED = [449245847767482379]
 
 BADGES = {
     "bot": "<:Bot:928765691778203719>",
@@ -49,5 +56,3 @@ BADGES = {
     "early": "<:EarlySupporter:928768119072231454>",
     "botdev": "<:VerfiedBotDeveloper:928765568058785852>"
 }
-
-ACTIVITY = "with toys"

@@ -21,60 +21,63 @@ class Spotify(commands.Cog):
 
         user = ctx.guild.get_member(id)
 
-        if user != None:
+        if user is not None:
     
-            if user.spotify.type == "listening" or "Listening":
+         if type(user.activity) == discord.Spotify:
 
-                x = user.raw_status
-                if x == "online":
-                    status = EMOTES["online"]
+             x = user.raw_status
+             if x == "online":
+                status = EMOTES["online"]
 
-                elif x == "idle":
-                    status = EMOTES["idle"]
+             elif x == "idle":
+                status = EMOTES["idle"]
 
-                elif x == "dnd":
-                    status = EMOTES["dnd"]
+             elif x == "dnd":
+                status = EMOTES["dnd"]
 
-                elif x == "offline":
-                    status = EMOTES["offline"]
+             elif x == "offline":
+                status = EMOTES["offline"]
 
-                else:
-                    status = EMOTES["question"]
+             else:
+                status = EMOTES["question"]
 
-                if user.avatar == None:
-                    avatar = user.default_avatar
-                else:
-                    avatar = user.avatar
+             if user.avatar == None:
+                avatar = user.default_avatar
+             else:
+                avatar = user.avatar
 
-                Embed = discord.Embed(description=f"{user.mention} | {status}", timestamp=datetime.datetime.utcnow(), color=user.color)
-                Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=avatar)
+             Embed = discord.Embed(description=f"{user.mention} | {status}", timestamp=datetime.datetime.utcnow(), color=user.color)
+             Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=avatar)
 
-                Embed.set_thumbnail(url=user.spotify.album_cover_url)
+             Embed.set_thumbnail(url=user.activity.album_cover_url)
 
-                artists = user.spotify.artists
+             artists = user.activity.artists
+             duration = user.activity.duration
+             durationd = str(duration).split(".")[0]
 
-                Embed.add_field(name="Song", value=user.spotify.title, inline=True)
-                Embed.add_field(name="Duration", value=user.spotify.duration)
-                Embed.add_field(name="Artist", value=", ".join(artists))
-                Embed.add_field(name="Album", value=user.spotify.album)
+             Embed.add_field(name="Song", value=user.activity.title, inline=False)
+             Embed.add_field(name="Duration", value=durationd, inline=True)
+             Embed.add_field(name="Artist", value=", ".join(artists), inline=False)
+             Embed.add_field(name="Album", value=user.activity.album, inline=True)
 
-                Embed.set_footer(text=f"ID: {member.id}", icon_url="https://emoji.gg/assets/emoji/7370_Spotify.png")
+             Embed.set_footer(text=f"ID: {user.id}", icon_url="https://emoji.gg/assets/emoji/7370_Spotify.png")
 
-                emoji = EMOTES["spotify"]
+             emoji = EMOTES["spotify"]
 
-                view = discord.ui.View()
-                view.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.spotify.track_url, style=discord.ButtonStyle.url))
+             View = discord.ui.View()
+             View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
 
-                ctx.respond(embed=Embed, view=view)
+             await ctx.respond(embed=Embed, view=View)
 
-            else:
-                error = EMOTES["error"]
-                Embed = discord.Embed(description=f"{error} This user is not listening to Spotify", color=COLORS["error"])
+         else:
+             error = EMOTES["error"]
+             Embed = discord.Embed(description=f"{error} This user is not listening to Spotify", color=COLORS["error"])
+             await ctx.respond(embed=Embed)
 
         else:
-            error = EMOTES["error"]
-            Embed = discord.Embed(description=f"{error} Couldn't find this member", color=COLORS["error"])
-            ctx.respond(embed=Embed)
+             error = EMOTES["error"]
+             Embed = discord.Embed(description=f"{error} Couldn't find this member", color=COLORS["error"])
+             await ctx.respond(embed=Embed)
 
 def setup(bot):
     bot.add_cog(Spotify(bot))

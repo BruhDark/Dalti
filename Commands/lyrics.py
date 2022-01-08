@@ -3,7 +3,7 @@ from discord.commands import slash_command, Option
 from discord.ext import commands
 import requests
 import datetime
-from config import COLORS, EMOTES
+from config import COLORS, EMOTES, VERSIONS
 
 class Lyrics(commands.Cog):
     def __init__(self, bot):
@@ -15,7 +15,7 @@ class Lyrics(commands.Cog):
 
         response = requests.get(f"https://some-random-api.ml/lyrics?title={query}").json()
         
-        if response.status_code ==  400:
+        try:
          eerror = EMOTES["error"]
          cerror = COLORS["error"]
          error = response["error"]
@@ -23,7 +23,7 @@ class Lyrics(commands.Cog):
 
          await ctx.respond(embed=Embed)
             
-        else:
+        except KeyError:
             ti = response["title"]
             author = response["author"]
             lyrics = response["lyrics"]
@@ -36,7 +36,7 @@ class Lyrics(commands.Cog):
             Embed = discord.Embed(title=f"{ti} - By {author}", 
             url=f"{links}", 
             description=f"{lyrics}",
-            color=COLORS["dalti"],
+            color=VERSIONS[f"{self.bot.user.id}"],
             timestamp=datetime.datetime.utcnow())
 
             Embed.set_thumbnail(url=f"{thumbnail}")
