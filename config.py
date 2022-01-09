@@ -12,8 +12,8 @@ EMOTES = {
     "question": "<:Question:929051955962195999>",
 
     "operational": "<:Operational:882404710148083724>",
-    "partialoutage": "<:PartialOutage:882404641286000681>",
-    "majoroutage": "<:MajorOutage:882404755949895730>",
+    "partialoutage": "<:PartialOutage:882404755949895730>",
+    "majoroutage": "<:MajorOutage:882404641286000681>",
     "maintenance": "<:UnderMaintenance:881969909247148052>",
 
     "dnd": "<:DoNotDisturb:928716110822518834>",
