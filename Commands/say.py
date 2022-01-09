@@ -20,13 +20,14 @@ class Say(commands.Cog):
              await ctx.respond("Sent message.", ephemeral=True)
 
          except Forbidden:
-             ctx.respond("I was not able to send the message, I am missing permissions.", ephemeral=True)
-
+             error = EMOTES["error"]
+             Embed = discord.Embed(description=f"{error} I was unable to send the message. I'm missing permissions.", color=COLORS["error"])
+             await ctx.respond(embed=Embed)
         else:
 
             error = EMOTES["error"]
             Embed = discord.Embed(description=f"{error} You are not authorized to run this command.", color=COLORS["error"])
-            ctx.respond()
+            await ctx.respond(embed=Embed)
 
 def setup(bot):
     bot.add_cog(Say(bot))
