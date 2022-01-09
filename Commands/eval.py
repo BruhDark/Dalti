@@ -23,7 +23,7 @@ class Eval(commands.Cog):
             Embed.set_author(name=f"{ctx.author.name}#{ctx.author.discriminator}", icon_url=ctx.author.avatar)
 
             Embed.add_field(name=":inbox_tray: Input Code", value=f"```py\n{code}```")
-            Embed.add_field(name=":outbox_tray: Output", value=f"```py\n{execute(code)}```")
+            Embed.add_field(name=":outbox_tray: Output", value=f"```py\n{exec(code)}```")
 
             await ctx.respond(embed=Embed)
 
