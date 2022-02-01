@@ -20,7 +20,7 @@ class Say(commands.Cog):
              await ctx.respond("Sent message.", ephemeral=True)
 
          except Forbidden:
-             ctx.respond("I was not able to send the message, I am missing permissions.", ephemeral=True)
+             await ctx.respond("I was not able to send the message, I am missing permissions.", ephemeral=True)
 
         else:
 

@@ -2,7 +2,7 @@ from discord.commands import slash_command, Option
 from discord.ext import commands
 import requests
 import discord
-import datetime
+from config import VERSIONS
 
 class RedPanda(commands.Cog):
     def __init__(self, bot):
@@ -18,7 +18,7 @@ class RedPanda(commands.Cog):
 
      Embed = discord.Embed(title="Found one!",
      description=exp,
-     color=discord.Color.from_rgb(156,26,4))
+     color=VERSIONS["{self.bot.user.id}"])
 
      Embed.set_image(url=response["image"])
 
