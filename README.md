@@ -2,7 +2,7 @@
 ![Oknos](https://media.discordapp.net/attachments/816109841852006500/937873916649676830/Oknos_Banner_1.png)
 
 ####  A small, simple and modern bot developed on Python
-![](https://img.shields.io/github/license/BruhDark/Oknos) ![](https://img.shields.io/github/release-date/BruhDark/Oknos?style=flat)
+![License](https://img.shields.io/github/license/BruhDark/Oknos) ![Release Date](https://img.shields.io/github/release-date/BruhDark/Oknos?style=flat)
 
 ![](https://img.shields.io/github/last-commit/BruhDark/Oknos?style=flat) ![](https://img.shields.io/github/commits-since/BruhDark/Oknos/main/main?style=flat) ![](https://img.shields.io/github/commit-activity/w/BruhDark/Oknos?style=flat) ![](https://img.shields.io/github/repo-size/BruhDark/Oknos?style=flat)
 ## Support
