@@ -22,7 +22,7 @@ class Say(commands.Cog):
          except Forbidden:
              error = EMOTES["error"]
              Embed = discord.Embed(description=f"{error} I was unable to send the message. I'm missing permissions.", color=COLORS["error"])
-             await ctx.respond(embed=Embed)
+             await ctx.respond(embed=Embed, ephemeral=True)
         else:
 
             error = EMOTES["error"]

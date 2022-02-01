@@ -11,6 +11,7 @@ class Whois(commands.Cog):
         self.bot = bot
 
     @slash_command()
+    @commands.cooldown(1, 10, commands.BucketType.user)
     async def whois(self, ctx: commands.Context, member: Option(discord.Member, "Specify a user", required=False, default=None)):
         """Get information about a user."""
 
@@ -124,11 +125,11 @@ class Whois(commands.Cog):
             bravery = BADGES["bravery"]
             flags.append(f"{bravery} Hypesquad Bravery")
 
-        if user.public_flags.hypesquad_brilliance:
+        elif user.public_flags.hypesquad_brilliance:
             brilliance = BADGES["brilliance"]
             flags.append(f"{brilliance} Hypesquad Brilliance")
 
-        if user.public_flags.hypesquad_balance:
+        elif user.public_flags.hypesquad_balance:
             balance = BADGES["balance"]
             flags.append(f"{balance} Hypesquad Balance")
 

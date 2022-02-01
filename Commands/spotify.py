@@ -26,31 +26,11 @@ class Spotify(commands.Cog):
         if user is not None:
     
 
-         if type(user.activity) == discord.Spotify:
+         try:
+             avatar = user.display_avatar.url
+             emoji = EMOTES["spotify"]
 
-
-             x = user.raw_status
-             if x == "online":
-                status = EMOTES["online"]
-
-             elif x == "idle":
-                status = EMOTES["idle"]
-
-             elif x == "dnd":
-                status = EMOTES["dnd"]
-
-             elif x == "offline":
-                status = EMOTES["offline"]
-
-             else:
-                status = EMOTES["question"]
-
-             if user.avatar == None:
-                avatar = user.default_avatar
-             else:
-                avatar = user.avatar
-
-             Embed = discord.Embed(description=f"{user.mention} | {status}", timestamp=datetime.datetime.utcnow(), color=user.color)
+             Embed = discord.Embed(description=f"{user.mention} | {emoji}", timestamp=datetime.datetime.utcnow(), color=user.color)
              Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=avatar)
 
              Embed.set_thumbnail(url=user.activity.album_cover_url)
@@ -67,8 +47,6 @@ class Spotify(commands.Cog):
 
              Embed.set_footer(text=f"ID: {user.id}", icon_url="https://emoji.gg/assets/emoji/7370_Spotify.png")
 
-             emoji = EMOTES["spotify"]
-
 
              View = discord.ui.View()
              View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
@@ -76,7 +54,7 @@ class Spotify(commands.Cog):
              await ctx.respond(embed=Embed, view=View)
 
 
-         else:
+         except Exception:
              error = EMOTES["error"]
              Embed = discord.Embed(description=f"{error} This user is not listening to Spotify", color=COLORS["error"])
              await ctx.respond(embed=Embed)
