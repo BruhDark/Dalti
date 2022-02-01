@@ -63,7 +63,7 @@ class OnConnect(commands.Cog):
         
         embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=True)
         embed.add_field(name="🚄 Railway Status", value=srailway, inline=True)
-        embed.add_field(name=":package: Resources", value=f"[Repository](https://github.com/BruhDark/Dalti) | [Last Commit](https://github.com/BruhDark/Dalti/commit/main) | [Invite](https://discord.com/oauth2/authorize?client_id=823941047473274960&permissions=1635242211574&scope=bot%20applications.commands)")
+        embed.add_field(name=":package: Resources", value=f"[Repository](https://github.com/BruhDark/Oknos) | [Last Commit](https://github.com/BruhDark/Oknos/commit/main) | [Invite](https://discord.com/oauth2/authorize?client_id=823941047473274960&permissions=1635242211574&scope=bot%20applications.commands)")
 
         embed.set_footer(text="Made with ♥️")
 
