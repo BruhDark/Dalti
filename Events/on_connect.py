@@ -25,13 +25,13 @@ class OnConnect(commands.Cog):
         days, hours, minutes, seconds = None, None, None, None
 
         if d:
-            days = f"{d}d"
+            days = f"{d} Days"
         if h:
-            hours = f"{h}h"
+            hours = f"{h} Hours"
         if m:
-            minutes = f"{m}m"
+            minutes = f"{m} Minutes"
         if s:
-            seconds = f"{s}s"
+            seconds = f"{s} Seconds"
 
         uptime = f"{days or ''} {hours or ''} {minutes or ''} {seconds or ''}".strip()
 
@@ -64,8 +64,6 @@ class OnConnect(commands.Cog):
         embed.add_field(name=":snake: PyCord Version", value=f"{pycordV}", inline=True)
         embed.add_field(name="🚄 Railway Status", value=srailway, inline=True)
         embed.add_field(name=":package: Resources", value=f"[Repository](https://github.com/BruhDark/Oknos) | [Last Commit](https://github.com/BruhDark/Oknos/commit/main) | [Invite](https://discord.com/oauth2/authorize?client_id=823941047473274960&permissions=1635242211574&scope=bot%20applications.commands)")
-
-        embed.set_footer(text="Made with ♥️")
 
         await ctx.respond(embed=embed)
 
