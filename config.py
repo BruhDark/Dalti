@@ -1,7 +1,7 @@
 import discord
 
 PREFIX = "o!"
-DESCRIPTION = "Say hello to Oknos. A new intelligence developed on Python\n*Meet the new bots era, with Oknos.*"
+DESCRIPTION = "Small, Simple. Modern. That's Oknos."
 
 EMOTES = {
     "success": "<:OknosSuccess:923699355779731476>",

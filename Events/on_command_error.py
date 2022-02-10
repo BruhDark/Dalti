@@ -4,23 +4,31 @@ from config import EMOTES, COLORS
 import datetime
 import traceback
 
-class OnApplicationCmdError(commands.Cog):
+class OnCmdError(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_application_command_error(self, ctx, error):
+    async def on_command_error(self, ctx: commands.Context, error):
         if isinstance(error, commands.CommandOnCooldown):
             
             x = EMOTES["error"]
             Embed = discord.Embed(description=f"{x} This command is on cooldown", color=COLORS["error"])
-            await ctx.respond(embed=Embed, ephemeral=True)
-        
+            await ctx.send(embed=Embed)
+
+        elif isinstance(error, commands.MissingRequiredArgument):
+            x = EMOTES["error"]
+            e = str(error)
+            e.strip(" ")
+
+            Embed = discord.Embed(description=f"{x} Missing argument: `{e[0]}`", color=COLORS["error"])
+            await ctx.send(embed=Embed)
+
         else:
             x = EMOTES["error"]
             Embed = discord.Embed(description=f"{x} Something went wrong\n\n```py\n{error}```", color=COLORS["error"])
-            await ctx.respond(embed=Embed)
+            await ctx.send(embed=Embed)
 
 
 def setup(bot):
-    bot.add_cog(OnApplicationCmdError(bot))
+    bot.add_cog(OnCmdError(bot))
