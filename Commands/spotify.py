@@ -45,7 +45,7 @@ class Spotify(commands.Cog):
              Embed.add_field(name="Album", value=user.activity.album, inline=True)
 
 
-             Embed.set_footer(text=f"ID: {user.id}", icon_url="https://emoji.gg/assets/emoji/7370_Spotify.png")
+             Embed.set_footer(text=f"ID: {user.id}")
 
 
              View = discord.ui.View()
