@@ -4,13 +4,15 @@ import requests
 import discord
 from config import VERSIONS
 
-class RedPanda(commands.Cog):
+class Redpanda(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Get an image of a red panda and an optional fact"
+        self.category = "Fun"
 
     @slash_command()
     async def redpanda(self, ctx: commands.Context, fact: Option(bool, "Add fact?", required=False, default=False)):
-     """Fetches a red panda image and an optional fact"""
+     """Get an image of a red panda and an optional fact"""
 
      response = requests.get("https://some-random-api.ml/animal/red_panda").json()
 
@@ -25,4 +27,4 @@ class RedPanda(commands.Cog):
      await ctx.respond(embed=Embed)
 
 def setup(bot):
-    bot.add_cog(RedPanda(bot))
+    bot.add_cog(Redpanda(bot))

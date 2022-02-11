@@ -8,6 +8,9 @@ from config import COLORS, EMOTES, VERSIONS
 class Lyrics(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Find a song lyrics"
+        self.category = "Fun"
+
 
     @slash_command()
     async def lyrics(self, ctx, query: Option(str, "Type a song title, lyric or artist")):

@@ -24,6 +24,9 @@ class OnCmdError(commands.Cog):
             Embed = discord.Embed(description=f"{x} Missing argument: `{arg[0]}`", color=COLORS["error"])
             await ctx.send(embed=Embed)
 
+        elif isinstance(error, commands.CommandNotFound):
+            pass
+
         else:
             x = EMOTES["error"]
             Embed = discord.Embed(description=f"{x} Something went wrong\n\n```py\n{error}```", color=COLORS["error"])

@@ -6,6 +6,8 @@ import discord
 class Ping(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Measure the bot latency"
+        self.category = "Miscellaneous"
 
     @slash_command()
     async def ping(self, ctx: commands.Context):
