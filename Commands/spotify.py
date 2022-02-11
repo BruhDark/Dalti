@@ -7,6 +7,8 @@ import datetime
 class Spotify(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Get someone Spotify activity"
+        self.category = "Miscellaneous"
 
     @slash_command()
     async def spotify(self, ctx: commands.Context, member: Option(discord.Member, "Select a user", required=False, default=None)):
@@ -25,44 +27,46 @@ class Spotify(commands.Cog):
 
         if user is not None:
     
+         for activity in user.activities:
+             if isinstance(activity, discord.Spotify):
 
-         try:
-             avatar = user.display_avatar.url
-             emoji = EMOTES["spotify"]
+                    avatar = user.display_avatar.url
+                    emoji = EMOTES["spotify"]
 
-             Embed = discord.Embed(description=f"{user.mention} | {emoji}", timestamp=datetime.datetime.utcnow(), color=user.color)
-             Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=avatar)
+                    Embed = discord.Embed(description=f"{user.mention} | {emoji}", timestamp=datetime.datetime.utcnow(), color=user.color)
+                    Embed.set_author(name=f"{user.name}#{user.discriminator}", icon_url=avatar)
 
-             Embed.set_thumbnail(url=user.activity.album_cover_url)
+                    Embed.set_thumbnail(url=user.activity.album_cover_url)
 
-             artists = user.activity.artists
-             duration = user.activity.duration
-             durationd = str(duration).split(".")[0]
+                    artists = user.activity.artists
+                    duration = user.activity.duration
+                    durationd = str(duration).split(".")[0]
 
-             Embed.add_field(name="Song", value=user.activity.title, inline=False)
-             Embed.add_field(name="Duration", value=durationd, inline=True)
-             Embed.add_field(name="Artist", value=", ".join(artists), inline=False)
-             Embed.add_field(name="Album", value=user.activity.album, inline=True)
-
-
-             Embed.set_footer(text=f"ID: {user.id}")
+                    Embed.add_field(name="Song", value=user.activity.title, inline=False)
+                    Embed.add_field(name="Duration", value=durationd, inline=True)
+                    Embed.add_field(name="Artist", value=", ".join(artists), inline=False)
+                    Embed.add_field(name="Album", value=user.activity.album, inline=True)
 
 
-             View = discord.ui.View()
-             View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
-
-             await ctx.respond(embed=Embed, view=View)
+                    Embed.set_footer(text=f"ID: {user.id}")
 
 
-         except Exception:
-             error = EMOTES["error"]
-             Embed = discord.Embed(description=f"{error} This user is not listening to Spotify", color=COLORS["error"])
-             await ctx.respond(embed=Embed)
+                    View = discord.ui.View()
+                    View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
 
-        else:
-             error = EMOTES["error"]
-             Embed = discord.Embed(description=f"{error} Couldn't find this member", color=COLORS["error"])
-             await ctx.respond(embed=Embed)
+                    await ctx.respond(embed=Embed, view=View)
+                    break
+
+
+             else:
+                error = EMOTES["error"]
+                Embed = discord.Embed(description=f"{error} This user is not listening to Spotify", color=COLORS["error"])
+                await ctx.respond(embed=Embed)
+
+         else:
+            error = EMOTES["error"]
+            Embed = discord.Embed(description=f"{error} Couldn't find this member", color=COLORS["error"])
+            await ctx.respond(embed=Embed)
 
 def setup(bot):
     bot.add_cog(Spotify(bot))

@@ -2,18 +2,19 @@ import discord
 from discord.ext import commands
 from discord.commands import Option, slash_command
 import datetime
-import time
 from config import EMOTES, BADGES, VERSIONS
-import math
+
 
 class Whois(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Get information about an user"
+        self.category = "Miscellaneous"
 
     @slash_command()
     @commands.cooldown(1, 10, commands.BucketType.user)
     async def whois(self, ctx: commands.Context, member: Option(discord.Member, "Specify a user", required=False, default=None)):
-        """Get information about a user."""
+        """Get information about an user."""
 
         await ctx.defer()
 

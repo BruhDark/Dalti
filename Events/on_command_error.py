@@ -19,10 +19,13 @@ class OnCmdError(commands.Cog):
         elif isinstance(error, commands.MissingRequiredArgument):
             x = EMOTES["error"]
             e = str(error)
-            e.strip(" ")
+            e = e.split(" ")
 
             Embed = discord.Embed(description=f"{x} Missing argument: `{e[0]}`", color=COLORS["error"])
             await ctx.send(embed=Embed)
+
+        elif isinstance(error, commands.CommandNotFound):
+            pass
 
         else:
             x = EMOTES["error"]

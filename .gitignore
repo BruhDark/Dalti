@@ -4,3 +4,5 @@ login.py
 dates.py
 .tmp.driveupload
 .tmp.drivedownload
+.env
+help.py

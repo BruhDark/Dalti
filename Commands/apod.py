@@ -7,6 +7,8 @@ from config import VERSIONS
 class Apod(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Retreive NASAs Astronomy Photo Of the Day"
+        self.category = "Fun"
 
     @slash_command()
     async def apod(self, ctx, explanation: Option(bool, "Add explanation?", required=False, default=False)):

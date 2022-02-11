@@ -5,7 +5,7 @@ import pymongo
 import jishaku
 from config import PREFIX
 
-client = pymongo.MongoClient(os.environ["MONGO_URI"])
+client = pymongo.MongoClient("mongodb+srv://Oknos:bkUPoiPc1nGcxe7y@cluster0.gee6w.mongodb.net/")
 # os.environ["MONGO_URI"]
 database = client["oknos"]
 
@@ -33,5 +33,5 @@ class ClassBot(commands.Bot):
 
 
 Bot = ClassBot()
-Bot.run(os.environ["DISCORD_TOKEN"])
+Bot.run("OTEyODQ2MzU5Nzg5NDYxNTI1.YZ14bA.h6weR92IJltKwDGw3fgCh6tMOx8")
     # os.environ["DISCORD_TOKEN"]

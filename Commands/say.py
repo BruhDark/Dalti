@@ -8,6 +8,8 @@ import discord
 class Say(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Make oknos say something"
+        self.category = "Developer"
 
     @slash_command()
     async def say(self, ctx, arguments: str):

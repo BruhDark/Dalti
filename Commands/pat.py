@@ -7,6 +7,8 @@ import datetime
 class Pat(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.description = "Pat a user you mention"
+        self.category = "Fun"
 
     @slash_command()
     async def pat(self, ctx: commands.Context, user: Option(discord.Member, "Select a user")):
