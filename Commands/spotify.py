@@ -38,30 +38,34 @@ class Spotify(commands.Cog):
 
                     Embed.set_thumbnail(url=user.activity.album_cover_url)
 
-                    artists = user.activity.artists
-                    duration = user.activity.duration
+                    artists = activity.artists
+                    duration = activity.duration
                     durationd = str(duration).split(".")[0]
 
-                    Embed.add_field(name="Song", value=user.activity.title, inline=False)
+                    Embed.add_field(name="Song", value=activity.title, inline=False)
                     Embed.add_field(name="Duration", value=durationd, inline=True)
                     Embed.add_field(name="Artist", value=", ".join(artists), inline=False)
-                    Embed.add_field(name="Album", value=user.activity.album, inline=True)
+                    Embed.add_field(name="Album", value=activity.album, inline=True)
 
 
                     Embed.set_footer(text=f"ID: {user.id}")
 
 
                     View = discord.ui.View()
-                    View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=user.activity.track_url, style=discord.ButtonStyle.url))
+                    View.add_item(discord.ui.Button(emoji=emoji,label='Listen on Spotify', url=activity.track_url, style=discord.ButtonStyle.url))
 
                     await ctx.respond(embed=Embed, view=View)
                     break
 
 
              else:
-                error = EMOTES["error"]
-                Embed = discord.Embed(description=f"{error} This user is not listening to Spotify", color=COLORS["error"])
-                await ctx.respond(embed=Embed)
+                 x = 0
+                 if x >= len(user.activities):
+                     error = EMOTES["error"]
+                     Embed = discord.Embed(description=f"{error} This user is not listening to Spotify", color=COLORS["error"])
+                     await ctx.respond(embed=Embed)
+                 else:
+                     x += 1
 
          else:
             error = EMOTES["error"]
