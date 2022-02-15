@@ -14,8 +14,6 @@ class Spotify(commands.Cog):
     async def spotify(self, ctx: commands.Context, member: Option(discord.Member, "Select a user", required=False, default=None)):
         """Get Spotify stats of someone or yourself"""
 
-        await ctx.defer()
-
         if member == None:
             id = ctx.author.id
         elif type(member) == int:
