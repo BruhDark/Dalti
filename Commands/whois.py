@@ -16,8 +16,6 @@ class Whois(commands.Cog):
     async def whois(self, ctx: commands.Context, member: Option(discord.Member, "Specify a user", required=False, default=None)):
         """Get information about an user."""
 
-        await ctx.defer()
-
         if member == None:
             id = ctx.author.id
         elif type(member) == int:
