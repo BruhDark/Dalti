@@ -16,7 +16,7 @@ class Message(commands.Cog):
             await message.add_reaction("✅")
             await message.add_reaction("❌")
 
-            thread = await message.create_thread("Suggestion Discussion")
+            thread = await message.create_thread(name="Suggestion Discussion", auto_archive_duration=None)
             msg = await thread.send(f":smile: Use this thread to discuss about the above suggestion.\nFeel free to propose changes, imrpovenets or ways to apply it to the bot on an afficent way.\n\n:wave: Have a good day.")
             await msg.pin()
 
