@@ -17,8 +17,8 @@ class Message(commands.Cog):
             await message.add_reaction("✅")
             await message.add_reaction("❌")
             
-            pattern = re.compile(r"^.*[^\\]]*.*$")
-            find = pattern.match(message)
+            pattern = re.compile(r"[^\]]*")
+            find = pattern.match(message.content)
             
             msg1 = message.content.split(" ")
             msg2 = msg1[1]
