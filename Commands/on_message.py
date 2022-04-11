@@ -1,3 +1,4 @@
+import re
 import discord
 from discord.ext import commands
 
@@ -16,10 +17,13 @@ class Message(commands.Cog):
             await message.add_reaction("✅")
             await message.add_reaction("❌")
             
+            pattern = re.compile(r"^.*[^\\]]*.*$")
+            find = pattern.match(message)
+            
             msg1 = message.content.split(" ")
             msg2 = msg1[1]
 
-            thread = await message.create_thread(name=msg2, auto_archive_duration=None)
+            thread = await message.create_thread(name=find, auto_archive_duration=None)
             msg = await thread.send(f":wave: Use this thread to discuss about the above suggestion.\nFeel free to propose changes, improvements or ways to apply it to the bot on an afficent way.\n\n:smile: Have a good day, and a fun discussion.")
 
 
